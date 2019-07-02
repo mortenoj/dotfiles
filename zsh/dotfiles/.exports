@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Command line tools
+export SSW_SAML_USER=morten@safeseaway.com
+
+# C++
+export LDFLAGS="-L/usr/local/opt/gettext/lib"
+export CPPFLAGS="-I/usr/local/opt/gettext/include"
+export CFLAGS='-std=c++15 -Wall -Wextra -Werror -pedantic-errors'
+
+# Java
+export PATH="$HOME/.jenv/bin:$PATH"
+# eval "$(jenv init -)"
+
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$PATH
+
+# Android development
+export ANDROID_HOME="/Users/morten/Library/Android/sdk/"
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
+export PATH="/Users/morten/protoc-gen-kotlin-0.3.0/bin:$PATH"
+
+# Golang
+# export PATH=$PATH:$GOPATH/bin
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+# Deleting GO:
+# sudo rm -rfv /usr/local/go
+
+# MO
+export DEV_ENVPATH=/Users/morten/code/work
+export DEFAULT_DEV_ENV=maritimeoptima
+
+# For custom scripts
+export PATH="/Users/morten/Documents/scripts/applescripts:$PATH"
+export PATH="/Users/morten/Documents/scripts/development:$PATH"
+
+# Temporary - will be changed later
+export AWS_DEFAULT_PROFILE='ssw'
+export AWS_PROFILE='ssw'
+
+# GPG
+export GPG_TTY=$(tty)
+
+export PURE_PROMPT_SYMBOL='🔥'
+
+export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
+export PATH=/usr/local/share/python:$PATH
+

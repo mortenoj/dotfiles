@@ -1,0 +1,126 @@
+#!/usr/bin/env bash
+
+# Android development
+
+# `ls` after `cd`
+function cd {
+  builtin cd "$@" && ls
+}
+
+
+# Builds and runs an android project to connected device or emulator
+# requires android package name as argument.
+function buildAndroid {
+    if [ $# -eq 0 ]; then
+        echo "\nError: No package name supplied!"
+        echo "Usage: buildAndroid project.package.name"
+        return 1
+    fi
+	./gradlew installDebug
+	adb shell monkey -p "$1" -c android.intent.category.LAUNCHER
+}
+
+# Starts a Pixel2 XL android emulator from a new tab.
+function startAndroidEmulator {
+    osascript -i <<EOF	
+        tell application "iTerm"
+            tell current window
+                create tab with default profile
+                tell the current session
+                    write text "cd \"$PWD\""
+                    write text "clear"
+					write text "emulator -avd Pixel2xl"
+                end tell
+            end tell
+        end tell
+EOF
+}
+
+function dev {
+    if [ -z $1 ]; then
+        if [ -z $DEFAULT_DEV_ENV ]; then
+            echo "usage: dev <environment>"
+            echo "Or export \$DEFAULT_DEV_ENV"
+            return
+        fi
+    fi
+    ENVIRONMENT=${1:-$DEFAULT_DEV_ENV}
+
+    file=$(find $DEV_ENVPATH -name "$ENVIRONMENT.sh")
+    if [ -z $file ]; then
+        echo "Environment shell file not found in path $DEV_ENVPATH/$ENVIRONMENT.sh"
+        return
+    fi
+    source $file
+    echo "Environemt $ENVIRONMENT Loaded"
+}
+
+# Runs arguments passed in new iterm tab
+function tab {
+    local cmd=""
+    local cdto="$PWD"
+    local args="$@"
+
+    if [ -d "$1" ]; then
+        cdto=`cd "$1"; pwd`
+        args="${@:2}"
+    fi
+
+    if [ -n "$args" ]; then
+        cmd="$args"
+    fi
+    osascript -i <<EOF	
+        tell application "iTerm"
+            tell current window
+                create tab with default profile
+                tell the current session
+                    write text "cd \"$cdto\"; $cmd"
+                    write text "clear; $cmd"
+                end tell
+            end tell
+        end tell
+EOF
+}
+
+# Git stuff
+function rwGit {
+    GITURL=$1
+    OWNER=$(echo $GITURL|grep -o ':\w*'|cut -d ":" -f2)
+    NOP="-$OWNER:"
+    echo ${GITURL//:/$NOP}
+}
+
+function gc {
+    git clone $(rwGit $1)
+}
+
+function gra {
+    git remote add $1 $(rwGit $2)
+}
+
+function dotfiles {
+    code ~/dotfiles
+    code ~/.zshrc
+}
+
+function prune-node {
+    find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
+}
+
+function deleteSystemLogs {
+    sudo rm /var/log/asl/*.asl
+}
+
+function create-service {
+    mkdir $1 && cd $1
+    git init
+    echo "# $1" >> README.md
+    git add .
+    git commit -m "initial commit"
+    hub create MaritimeOptima/$1 -p
+    git push origin master
+}
+
+function psgrep {
+    ps -ef | egrep "$1"
+}

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# SSW
+source /Users/morten/code/terminal-utilities/include.sh
+
+# Syntax highlighting and autocomplete
+source /Users/morten/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Z - rupa
+if command -v brew >/dev/null 2>&1; then
+	# Load rupa's z if installed
+	[ -f $(brew --prefix)/etc/profile.d/z.sh ] && source $(brew --prefix)/etc/profile.d/z.sh
+fi
+
