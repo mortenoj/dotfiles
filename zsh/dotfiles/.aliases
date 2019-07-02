@@ -24,3 +24,7 @@ alias ktlint="./gradlew ktlintFormat"
 
 # Git
 alias unstage="git clean -df && git checkout -- ."
+
+# PostGreSQL
+alias psqlStart="brew services start postgresql"
+alias psqlStop="brew services stop postgresql"
