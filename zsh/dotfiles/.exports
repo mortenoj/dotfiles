@@ -3,11 +3,6 @@
 # Command line tools
 export SSW_SAML_USER=morten@safeseaway.com
 
-# C++
-export LDFLAGS="-L/usr/local/opt/gettext/lib"
-export CPPFLAGS="-I/usr/local/opt/gettext/include"
-export CFLAGS='-std=c++15 -Wall -Wextra -Werror -pedantic-errors'
-
 # Java
 export PATH="$HOME/.jenv/bin:$PATH"
 # eval "$(jenv init -)"
@@ -22,6 +17,9 @@ export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
 export ANDROID_SDK=$HOME/Library/Android/sdk
 export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
 export PATH="/Users/morten/protoc-gen-kotlin-0.3.0/bin:$PATH"
+
+export PATH=~/Library/Android/sdk/tools:$PATH
+export PATH=~/Library/Android/sdk/platform-tools:$PATH
 
 # Golang
 # export PATH=$PATH:$GOPATH/bin
@@ -39,6 +37,7 @@ export DEFAULT_DEV_ENV=maritimeoptima
 # For custom scripts
 export PATH="/Users/morten/Documents/scripts/applescripts:$PATH"
 export PATH="/Users/morten/Documents/scripts/development:$PATH"
+export PATH="/Users/morten/Documents/tools/grib2json/bin/:$PATH"
 
 # Temporary - will be changed later
 export AWS_DEFAULT_PROFILE='ssw'
@@ -51,4 +50,9 @@ export PURE_PROMPT_SYMBOL='🔥'
 
 export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
 export PATH=/usr/local/share/python:$PATH
+
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
