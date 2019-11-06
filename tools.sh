@@ -44,6 +44,8 @@ brew cask install geektool
 brew cask install cyberduck
 brew cask install java
 brew cask install virtualbox
+brew install grpcurl
+
 
 # -------------------------------
 # --------- Dev tools ----------

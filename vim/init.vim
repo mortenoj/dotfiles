@@ -29,8 +29,13 @@ Plug 'tpope/vim-surround'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'wokalski/autocomplete-flow'
+" For func argument completion
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+"Plug 'zchee/deoplete-jedi'
 Plug 'ervandew/supertab'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
@@ -46,16 +51,45 @@ Plug 'vim-scripts/loremipsum'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'metakirby5/codi.vim'
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 Plug 'mileszs/ack.vim'
-"Plug 'W0rp/ale'
+"Plug 'dense-analysis/ale'
+Plug 'vim-scripts/indentpython.vim'
+
+Plug 'nvie/vim-flake8'
+
+
 """ Plug 'tweekmonster/gofmt.vim'
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'kaicataldo/material.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
+
+Plug 'OmniSharp/omnisharp-vim'
+
+"Plug 'cyansprite/deoplete-omnisharp' , {'do': './install.sh'}
+
+filetype indent plugin on
+
+""" C#
+set omnifunc=OmniSharp#Complete
+" automatic syntax check on events (TextChanged requires Vim 7.4)
+let g:ycm_autoclose_preview_window_after_completion=1
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_server_use_mono = 1
+let g:OmniSharp_timeout = 5
+let g:OmniSharp_highlight_types = 1
+
+autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
+autocmd BufWritePost *.cs SyntasticCheck
+autocmd BufWritePost *.cs SyntasticSetLoclist
+autocmd TextChanged *.cs SyntasticSetLoclist
+autocmd TextChanged *.cs SyntasticSetLoclist
+
+set completeopt=longest,menuone,preview
 
 """ golang
 function! BuildYMC(info)
@@ -69,11 +103,12 @@ Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYMC') }
 
 call plug#end()
 
-
-
+"set clipboard=unnamed
 
 """ Python3 VirtualEnv
-let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
+"let g:python3_host_prog = expand('~/.config/nvim/env/bin/python')
+let g:python3_host_prog = expand('/usr/local/bin/python3')
+let g:python_host_prog = '/usr/local/bin/python'
 
 """ Coloring
 syntax on
@@ -83,6 +118,7 @@ highlight Comment gui=bold
 highlight Normal gui=none
 highlight NonText guibg=none
 
+
 " Opaque Background (Comment out to use terminal's profile)
 set termguicolors
 
@@ -91,11 +127,11 @@ set termguicolors
 "highlight LineNr guibg=NONE ctermbg=NONE
 
 """ Other Configurations
-filetype plugin indent on
+
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab autoindent
 set incsearch ignorecase smartcase hlsearch
 set ruler laststatus=2 showcmd showmode
-set list listchars=trail:»,tab:»-
+"set list listchars=trail:»,tab:»-
 set fillchars+=vert:\ 
 set wrap breakindent
 set encoding=utf-8
@@ -124,10 +160,15 @@ tmap <C-w> <Esc><C-w>
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
+ "Deoplete
+"let g:deoplete#enable_at_startup = 1
+"call deoplete#custom#option('sources', {'cs': ['OmniSharp']})
+
 " Disable documentation window
 set completeopt-=preview
+
+" neosnippet
+let g:neosnippet#enable_completed_snippet = 1
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "<C-n>"
@@ -154,6 +195,7 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
   \ 'ctrl-v': 'vsplit' }
+
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
   \ 'bg':      ['bg', 'Normal'],
@@ -179,6 +221,21 @@ autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType htmldjango inoremap {{ {{  }}<left><left><left>
 autocmd FileType htmldjango inoremap {% {%  %}<left><left><left>
 autocmd FileType htmldjango inoremap {# {#  #}<left><left><left>
+
+" Python
+autocmd FileType py setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79 expandtab autoindent fileformat=unix
+let python_highlight_all=1
+
+"python with virtualenv support
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+  "project_base_dir = os.environ['VIRTUAL_ENV']
+  "activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  "execfile(activate_this, dict(__file__=activate_this))
+"EOF
+
 
 " Markdown and Journal
 autocmd FileType markdown setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -226,6 +283,7 @@ endfunction
 """ Custom Mappings
 
 let mapleader=","
+
 nmap <leader>q :NERDTreeToggle<CR>
 nmap \ <leader>q
 nmap <leader>w :TagbarToggle<CR>
@@ -252,13 +310,29 @@ xmap <leader>l :Limelight!!<CR>
 nmap <leader>d :!./deploy.sh<CR>
 autocmd FileType python nmap <leader>x :0,$!~/.config/nvim/env/bin/python -m yapf<CR>
 nmap <silent> <leader><leader> :noh<CR>
+
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>
+
+"nmap <silent> <leader>e :ALENext<cr>
+"nmap <silent> <leader>ak :ALEPrevious<cr>
+
+noremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 noremap <Leader>y "*y
 noremap <Leader>p "*p
 noremap <Leader>Y "+y
 noremap <Leader>P "+p
+
+
+augroup omnisharp_commands
+    autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
+    autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
+    autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
+
 
 """ Golang VIM
 
@@ -273,14 +347,26 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_cs_checkers = ['code_checker']
 
-"let b:ale_linters = ['go', 'golint', 'gofmt', 'errcheck']
+
+"let g:ale_linters = {
+"\   'javascript': ['eslint'],
+"\   'go': ['golangci-lint'],
+"\   'cs': ["OmniSharp"]
+"\}
+
+"let g:ale_fixers = {
+"\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+"\   'javascript': ['prettier', 'eslint'],
+"\}
+
+
 "let g:ale_sign_error = '>>'
 "let g:ale_sign_warning = '--'
-
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+"let g:ale_go_golangci_lint_package=1
+"let g:ale_open_list = 1
 
 "set background=dark
 colorscheme nova
@@ -290,6 +376,4 @@ colorscheme nova
 
 "colorscheme one
 "set background=light  for the dark version
- "set background=light " for the light version
-
-
+"set background=light " for the light version

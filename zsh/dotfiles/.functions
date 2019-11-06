@@ -124,3 +124,95 @@ function create-service {
 function psgrep {
     ps -ef | egrep "$1"
 }
+
+function prune-docker {
+    docker system prune -a
+}
+
+function beatsx {
+    if [[ "$1" = "connect" ]]; then
+        btconnect "Mortens BeatsX"
+    elif [ "$1" = "disconnect" ]; then
+        btdisconnect "Mortens BeatsX"
+    else
+        echo "USAGE: beatsx [connect|disconnext]"
+    fi
+}
+
+function marshal {
+    if [[ "$1" = "connect" ]]; then
+        btconnect "MONITOR BLUETOOTH"
+    elif [ "$1" = "disconnect" ]; then
+        btdisconnect "MONITOR BLUETOOTH"
+    else
+        echo "USAGE: marshal [connect|disconnext]"
+    fi
+}
+
+function btdisconnect {
+    if [[ $# -ne 1 ]] ; then
+        echo 'btconnect takes exactly 1 argument'
+        return 1
+    fi
+osascript << EOD
+  activate application "SystemUIServer"
+  tell application "System Events"
+    tell process "SystemUIServer"
+      set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")
+      tell btMenu
+        click
+        tell (menu item "$1" of menu 1)
+          click
+          if exists menu item "Disconnect" of menu 1 then
+            click menu item "Disconnect" of menu 1
+            tell application "iTerm2"
+              activate
+            end tell
+            return "Disconnecting..."
+          else
+            tell application "iTerm2"
+              activate
+            end tell
+            return "Disconnect menu was not found, are you already disconnected?"
+          end if
+        end tell
+      end tell
+    end tell
+  end tell
+EOD
+}
+
+function btconnect {
+    if [[ $# -ne 1 ]] ; then
+        echo 'btconnect takes exactly 1 argument'
+        return 1
+    fi
+
+osascript << EOD
+  activate application "SystemUIServer"
+  tell application "System Events"
+    tell process "SystemUIServer"
+      set btMenu to (menu bar item 1 of menu bar 1 whose description contains "bluetooth")
+      tell btMenu
+        click
+        tell (menu item "$1" of menu 1)
+          click
+          if exists menu item "Connect" of menu 1 then
+            click menu item "Connect" of menu 1
+            tell application "iTerm2"
+              activate
+            end tell
+            return "Connecting..."
+          else
+            tell application "iTerm2"
+              activate
+            end tell
+            return "Connect menu was not found, are you already connected?"
+          end if
+        end tell
+      end tell
+    end tell
+  end tell
+EOD
+}
+
