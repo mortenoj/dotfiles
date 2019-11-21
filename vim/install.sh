@@ -29,14 +29,17 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.g
 # brew tap homebrew/cask-fonts
 # brew cask install font-droidsansmono-nerd-font
 
+npm install -g javascript-typescript-langserver
 
 echo "Recommended add an alias to from vim to nvim"
 echo "alias vim='nvim'"
+
+
 
 # Running plug install
 sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim
 nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
 rm ~/.config/nvim/init.vim
 
-# Copy init.vim 
+# Copy init.vim
 cp init.vim ~/.config/nvim/

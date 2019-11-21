@@ -65,4 +65,3 @@ unset __conda_setup
 
 # Created by `userpath` on 2019-11-01 20:28:02
 export PATH="$PATH:/Users/morten/.local/bin"
-

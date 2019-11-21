@@ -39,10 +39,6 @@ export PATH="/Users/morten/Documents/scripts/applescripts:$PATH"
 export PATH="/Users/morten/Documents/scripts/development:$PATH"
 export PATH="/Users/morten/Documents/tools/grib2json/bin/:$PATH"
 
-# Temporary - will be changed later
-export AWS_DEFAULT_PROFILE='ssw'
-export AWS_PROFILE='ssw'
-
 # GPG
 export GPG_TTY=$(tty)
 
@@ -52,7 +48,22 @@ export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
 export PATH=/usr/local/share/python:$PATH
 
 
+export EDITOR="nvim"
+
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
+
+# AWS development variables
+export AWS_PROFILE='ssw'
+export AWS_DEFAULT_PROFILE='ssw'
+
+# Saml authentication
+export GSAML_USER="morten@safeseaway.com"
+
+# Don't change these
+export GIP_ID='C013c4br7'   # Google SSO IDP identifie
+export GSP_ID=354598411587  # Google SSO SP identifier
+export AWS_ENVIRONMENT='development'
+export AWS_REGION='eu-central-1'

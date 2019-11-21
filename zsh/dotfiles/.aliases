@@ -30,4 +30,3 @@ alias psqlStart="brew services start postgresql"
 alias psqlStop="brew services stop postgresql"
 
 alias unstage="git clean -df && git checkout -- ."
-
