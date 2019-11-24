@@ -6,5 +6,5 @@ cp ~/.zshrc zsh/.zshrc
 
 
 # Update vim
-rm -f vim/init.vim
-cp ~/.config/nvim/init.vim vim/init.vim
+rm -rf vim/init.vim vim/configs
+cp -r ~/.config/nvim/init.vim ~/.config/nvim/configs vim/

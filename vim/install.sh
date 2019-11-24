@@ -43,3 +43,4 @@ rm ~/.config/nvim/init.vim
 
 # Copy init.vim
 cp init.vim ~/.config/nvim/
+cp -r configs ~/.config/nvim/
