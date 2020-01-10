@@ -22,12 +22,6 @@ function! ColorForgotten()
     color forgotten-light
 endfunction
 
-" (Dark)
-function! ColorMonokai()
-    let g:airline_theme='badcat'
-    colorscheme monokai
-endfunction
-
 
 " Bindings
 nmap <leader>ee :Colors<CR>
@@ -36,7 +30,6 @@ nmap <leader>ea :AirlineTheme<CR>
 nmap <leader>e1 :call ColorOne()<CR>
 nmap <leader>e2 :call ColorNova()<CR>
 nmap <leader>e3 :call ColorForgotten()<CR>
-nmap <leader>e4 :call ColorMonokai()<CR>
 
 """ ========================================================
 """ Colors
@@ -56,7 +49,6 @@ syntax on
 
 " Opaque Background (Comment out to use terminal's profile)
 set termguicolors
-color dracula
 "set notermguicolors "could fix tmux issues
 
 colorscheme onedark
@@ -71,6 +63,7 @@ highlight NonText guibg=none
 "highlight LineNr guibg=NONE ctermbg=NONE
 
 "let g:airline_theme='onedark'
+"let g:airline_theme='badcat'
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
 let g:airline_section_warning = ''

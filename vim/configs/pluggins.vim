@@ -2,7 +2,12 @@
 """ Plugin settings
 """ ========================================================
 
-" Language client
+
+""" ========================================================
+""" Language client
+""" ========================================================
+let g:LanguageClient_autoStart = 1
+
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'pyls',
@@ -12,10 +17,14 @@ if executable('pyls')
 endif
 
 let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
     \ 'python': ['/usr/local/bin/pyls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
     \ }
+    "\ 'cpp': ['/usr/local/Cellar/llvm/9.0.0/bin/clangd'],
     "\ 'go': ['gopls'],
+
+let g:LanguageClient_useVirtualText = 0
+
 
 """ ========================================================
 """ SuperTab
@@ -46,7 +55,6 @@ nmap <leader>q :NERDTreeToggle<CR>
 """ ========================================================
 """ Deoplete
 """ ========================================================
-let g:loaded_youcompleteme = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
@@ -67,7 +75,7 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 """ ========================================================
 let g:jedi#completions_enabled = 0 " disable autocompletion, cause we use deoplete for completion
 let g:jedi#use_splits_not_buffers = 'right' " open the go-to function in split, not another buffer
-let g:jedi#rename_command = "<leader>R"
+"let g:jedi#rename_command = "<leader>R"
 
 
 """ ========================================================
@@ -91,26 +99,30 @@ let g:ale_linters = {
 \   'javascript': ['eslint', 'prettier'],
 \   'vue': ['eslint'],
 \   'go': ['golangci-lint'],
-\   'python': ['pyls', 'pylint', 'flake8'],
+\   'python': ['pyls'],
 \   'cs': ['omni'],
+\   'cpp': ['clang'],
 \}
 
-"\   'go': ['gofmt', 'errcheck', 'gopls','golint'],
 let g:ale_fixers = {
-\    '*': ['remove_trailing_lines', 'trim_whitespace'],
-\    'javascript': ['eslint', 'prettier'],
-\    'typescript': ['prettier', 'tslint', 'eslint'],
-\    'vue': ['eslint'],
-\    'scss': ['prettier'],
-\    'html': ['prettier'],
-\    'reason': ['refmt'],
-\    'python': ['black'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['prettier', 'tslint', 'eslint'],
+\   'vue': ['eslint'],
+\   'scss': ['prettier'],
+\   'html': ['prettier'],
+\   'python': ['black'],
+\   'cpp': ['clang'],
 \}
 
-"\    'go': ['gofmt', 'goimports' ],
-let g:ale_cs_mcsc_assemblies = [ '/Applications/2018.3.4f1/Unity.app/Contents/Managed/UnityEngine.dll' ]
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 
-" turn highlighting on
+" Golang fix
+let g:ale_go_golangci_lint_package=1
+let g:ale_go_golangci_lint_options = '--enable-all
+\ --disable lll'
+
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_lint_on_insert_leave = 0
@@ -118,8 +130,8 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 1
 
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+" C# fix
+let g:ale_cs_mcsc_assemblies = [ '/Applications/2018.3.4f1/Unity.app/Contents/Managed/UnityEngine.dll' ]
 
 " indentLine
 let g:indentLine_char = '▏'
@@ -163,3 +175,13 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nmap <leader>f :Files<CR>
+
+
+""" ========================================================
+""" Markdown viewer 
+""" ========================================================
+
+let vim_markdown_preview_github=1
+let g:vim_markdown_preview_browser="Google Chrome"
+
+

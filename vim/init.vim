@@ -24,3 +24,6 @@ source ~/.config/nvim/configs/python.vim
 
 " Csharp file for C# specific settings
 source ~/.config/nvim/configs/csharp.vim
+
+" Cpp file for C++ specific settings
+source ~/.config/nvim/configs/cpp.vim

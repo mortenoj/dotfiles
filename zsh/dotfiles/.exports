@@ -47,9 +47,7 @@ export PURE_PROMPT_SYMBOL='🔥'
 export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
 export PATH=/usr/local/share/python:$PATH
 
-
 export EDITOR="nvim"
-
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"

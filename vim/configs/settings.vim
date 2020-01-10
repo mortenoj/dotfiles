@@ -18,6 +18,7 @@ set encoding=utf-8
 set number
 set title
 set guifont=DroidSansMono\ Nerd\ Font:h11
+
 " Yank highlight
 hi HighlightedyankRegion cterm=reverse gui=reverse
 let g:highlightedyank_highlight_duration = 400
@@ -48,15 +49,13 @@ nmap <leader>t :call TrimWhitespace()<CR>
 nmap <leader>s <C-w>s<C-w>j:terminal<CR>
 nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
 
-"""nmap <leader>d <Plug>(pydocstring)
 nmap <leader>g :Goyo<CR>
 nmap <leader>h :RainbowParentheses!!<CR>
-"nmap <leader>j :set filetype=journal<CR>
+nmap <leader>j :set filetype=journal<CR>
 "
 nmap <leader>k :ColorToggle<CR>
 nmap <leader>l :Limelight!!<CR>
 xmap <leader>l :Limelight!!<CR>
-nmap <leader>d :!./deploy.sh<CR>
 
 nmap <Tab> :bnext<CR>
 nmap <S-Tab> :bprevious<CR>

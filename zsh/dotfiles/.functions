@@ -246,7 +246,3 @@ function argocd-login {
     argocd login localhost:8080 --sso
 }
 
-#function aks-kube-conf {
-    #RESOURCE=${AZ_RESOURCE:-mo-dev} 
-    #az aks get-credentials --name ${RESOURCE}-aks --resource-group ${RESOURCE}-resources
-#}
