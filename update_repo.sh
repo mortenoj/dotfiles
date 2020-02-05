@@ -6,5 +6,14 @@ cp ~/.zshrc zsh/.zshrc
 
 
 # Update vim
-rm -rf vim/init.vim vim/settings
-cp -r ~/.config/nvim/init.vim ~/.config/nvim/settings ~/.config/nvim/ftplugin vim/
+declare -a configs=(
+    "init.vim"
+    "ftplugin"
+    "plugin"
+)
+
+for file in "${configs[@]}"; do
+    rm -rf "vim/$file"
+    cp -r "~/.config/nvim/$file" "vim/$file"
+done
+

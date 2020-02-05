@@ -1,54 +1,28 @@
-autocmd FileType cs setlocal omnifunc=OmniSharp#Complete
-"autocmd FileType cs setlocal omnifunc=ale#completion#OmniFunc
+" Deoplete omnisharp settings for c# completion
+"let g:deoplete_omnisharp_exe_path = '~/.config/nvim/plugged/deoplete-omnisharp/omnisharp-server/OmniSharp/bin/Debug/OmniSharp.exe'
+"let g:deoplete_omnisharp_port = get(g:, "deoplete_omnisharp_port", 9999)
 
-"let g:ycm_autoclose_preview_window_after_completion=1
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_server_use_mono = 1
-let g:OmniSharp_timeout = 5
-let g:OmniSharp_highlight_types = 1
+setlocal omnifunc=OmniSharp#Complete
+
+nnoremap gd :OmniSharpGotoDefinition<CR>
+nnoremap <Leader>fi :OmniSharpFindImplementations<CR>
+nnoremap <Leader>fs :OmniSharpFindSymbol<CR>
+nnoremap <Leader>fu :OmniSharpFindUsages<CR>
+nnoremap <Leader>fm :OmniSharpFindMembers<CR>
+
 
 "call deoplete#custom#option('sources', {
-        "\ 'cs': ['omnisharp'],
-        "\})
+    "\ 'cs': ['omnisharp'],
+    "\})
+"let g:deoplete#sources = {}
+"let g:deoplete#sources._ = ['buffer', 'ultisnips', 'file', 'dictionary', 'neco-syntax', 'deoplete-tabnine']
+"let g:deoplete#sources.cs = ['omni', 'file', 'buffer', 'ultisnips']
 
+"let g:deoplete#omni_patterns = {
+"\   'cs': ['*']
+"\}
 
-"call deoplete#custom#option('omni_patterns', {
-"\   'cs': ['\w*'],
-"\})
+call deoplete#custom#option('omni_patterns', {
+\   'cs': '[^. *\t]\.\w*',
+\})
 
-"augroup omnisharp_commands
-    "autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
-    "autocmd FileType cs nnoremap <buffer> gd :OmniSharpGotoDefinition<CR>
-    "autocmd FileType cs nnoremap <buffer> <Leader>fi :OmniSharpFindImplementations<CR>
-    "autocmd FileType cs nnoremap <buffer> <Leader>fs :OmniSharpFindSymbol<CR>
-    "autocmd FileType cs nnoremap <buffer> <Leader>fu :OmniSharpFindUsages<CR>
-    "autocmd FileType cs nnoremap <buffer> <Leader>fm :OmniSharpFindMembers<CR>
-"augroup END
-
-function SetCSSettings()
-
-    " Use deoplete.
-    call deoplete#enable()
-
-    " Use smartcase.
-    call deoplete#custom#option('smart_case', v:true)
-
-    " Use OmniSharp-vim omnifunc 
-    call deoplete#custom#source('omni', 'functions', { 'cs':  'OmniSharp#Complete' })
-
-    " Set how Deoplete filters omnifunc output.
-    call deoplete#custom#var('omni', 'input_patterns', {
-        \ 'cs': '[^. *\t]\.\w*',
-        \})
-
-    " ... then goes your mappings for :OmniSharp* functions, see its doc
-endfunction
-
-augroup csharp_commands
-    autocmd!
-
-    " Use smartcase.
-    " call deoplete#custom#option('smart_case', v:true) 
-    autocmd FileType cs call SetCSSettings()
-
-augroup END
