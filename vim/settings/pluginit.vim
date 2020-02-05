@@ -28,6 +28,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Autocomplete
     Plug 'davidhalter/jedi-vim'             " Using for goto not completion
     Plug 'zchee/deoplete-jedi'
+    Plug 'zchee/deoplete-clang'
+    Plug 'OmniSharp/omnisharp-vim'
 
     "Plug 'neoclide/coc.nvim', {'branch': 'release'} " Might be a better deoplete
     Plug 'JamshedVesuna/vim-markdown-preview' " Markdown viewer
@@ -47,7 +49,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
     Plug 'Yggdroot/indentLine'
     Plug 'vim-scripts/indentpython.vim'
-    Plug 'OmniSharp/omnisharp-vim'
     Plug 'SirVer/ultisnips'
     Plug 'honza/vim-snippets'
     Plug 'tpope/vim-fugitive'

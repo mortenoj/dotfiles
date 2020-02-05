@@ -1,29 +1,14 @@
 " Init file for initializing pluggins
-source ~/.config/nvim/configs/init.vim
+source ~/.config/nvim/settings/pluginit.vim
 
-" Pluggins file for  pluggin specific settings
-source ~/.config/nvim/configs/pluggins.vim
+" Pluggins file for pluggin specific settings
+source ~/.config/nvim/settings/plugconf.vim
 
 " Visuals file for all visual settings
-source ~/.config/nvim/configs/visuals.vim
+source ~/.config/nvim/settings/visuals.vim
 
 " Settings file for all native vim settings and functions
-source ~/.config/nvim/configs/settings.vim
+source ~/.config/nvim/settings/general.vim
 
+"""NB: Language specific settings are handled by ftplugins"""
 
-"""==========================LANGUAGES=========================="""
-
-" Golang file for golang specific settings
-source ~/.config/nvim/configs/golang.vim
-
-" Web file for web specific settings such as JS, HTML, CSS etc...
-source ~/.config/nvim/configs/web.vim
-
-" Python file for Python specific settings
-source ~/.config/nvim/configs/python.vim
-
-" Csharp file for C# specific settings
-source ~/.config/nvim/configs/csharp.vim
-
-" Cpp file for C++ specific settings
-source ~/.config/nvim/configs/cpp.vim

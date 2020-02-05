@@ -6,7 +6,6 @@
 """ ========================================================
 """ Language client
 """ ========================================================
-let g:LanguageClient_autoStart = 1
 
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
@@ -19,11 +18,13 @@ endif
 let g:LanguageClient_serverCommands = {
     \ 'python': ['/usr/local/bin/pyls'],
     \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'go': ['gopls'],
+    \ 'cs': ['omnisharp'],
     \ }
     "\ 'cpp': ['/usr/local/Cellar/llvm/9.0.0/bin/clangd'],
-    "\ 'go': ['gopls'],
 
-let g:LanguageClient_useVirtualText = 0
+"let g:LanguageClient_useVirtualText = 0
+let g:LanguageClient_autoStart = 1
 
 
 """ ========================================================
@@ -100,7 +101,7 @@ let g:ale_linters = {
 \   'vue': ['eslint'],
 \   'go': ['golangci-lint'],
 \   'python': ['pyls'],
-\   'cs': ['omni'],
+\   'cs': ['omnisharp'],
 \   'cpp': ['clang'],
 \}
 
@@ -130,6 +131,8 @@ let g:ale_lint_on_enter = 0
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 1
 
+let g:airline#extensions#ale#enabled = 1
+
 " C# fix
 let g:ale_cs_mcsc_assemblies = [ '/Applications/2018.3.4f1/Unity.app/Contents/Managed/UnityEngine.dll' ]
 
@@ -149,7 +152,6 @@ let g:tagbar_width = 30
 let g:tagbar_iconchars = ['↠', '↡']
 
 nmap <leader>w :TagbarToggle<CR>
-
 
 """ ========================================================
 """ FZF-Vim
@@ -175,13 +177,3 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nmap <leader>f :Files<CR>
-
-
-""" ========================================================
-""" Markdown viewer 
-""" ========================================================
-
-let vim_markdown_preview_github=1
-let g:vim_markdown_preview_browser="Google Chrome"
-
-
