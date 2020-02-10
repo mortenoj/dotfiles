@@ -42,7 +42,7 @@ export PATH="/Users/morten/Documents/tools/grib2json/bin/:$PATH"
 # GPG
 export GPG_TTY=$(tty)
 
-export PURE_PROMPT_SYMBOL='🔥'
+export PURE_PROMPT_SYMBOL='⚡️'
 
 export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
 export PATH=/usr/local/share/python:$PATH
@@ -65,3 +65,6 @@ export GIP_ID='C013c4br7'   # Google SSO IDP identifie
 export GSP_ID=354598411587  # Google SSO SP identifier
 export AWS_ENVIRONMENT='development'
 export AWS_REGION='eu-central-1'
+
+export MO_USER=morten
+export VAULT_ADDR=http://vault.infrastructure:8200

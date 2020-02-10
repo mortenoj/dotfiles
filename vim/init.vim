@@ -41,6 +41,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'zchee/deoplete-jedi'
     Plug 'zchee/deoplete-clang'
+    Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+
     "Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
     Plug 'OmniSharp/omnisharp-vim'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Golang support
