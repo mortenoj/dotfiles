@@ -7,7 +7,6 @@ function cd {
   builtin cd "$@" && ls
 }
 
-
 # Builds and runs an android project to connected device or emulator
 # requires android package name as argument.
 function buildAndroid {
@@ -22,7 +21,7 @@ function buildAndroid {
 
 # Starts a Pixel2 XL android emulator from a new tab.
 function startAndroidEmulator {
-    osascript -i <<EOF	
+    osascript -i <<EOF
         tell application "iTerm"
             tell current window
                 create tab with default profile
@@ -69,7 +68,7 @@ function tab {
     if [ -n "$args" ]; then
         cmd="$args"
     fi
-    osascript -i <<EOF	
+    osascript -i <<EOF
         tell application "iTerm"
             tell current window
                 create tab with default profile
@@ -235,7 +234,7 @@ EOD
 
 function argocd-add {
     REMOTE=$(git config --get remote.origin.url)
-    argocd repo add $REMOTE --ssh-private-key-path ~/.ssh/id_argocd_rsa --insecure-ignore-host-key 
+    argocd repo add $REMOTE --ssh-private-key-path ~/.ssh/id_argocd_rsa --insecure-ignore-host-key
 }
 
 function proxy-argo {
@@ -245,4 +244,3 @@ function proxy-argo {
 function argocd-login {
     argocd login localhost:8080 --sso
 }
-

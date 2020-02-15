@@ -44,9 +44,17 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
     Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
-    "Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
     Plug 'OmniSharp/omnisharp-vim'
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Golang support
 
-call plug#end()
+    " Language client for extended support for some languages
+    Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
+
+
+
+call plug#end()

@@ -5,6 +5,7 @@ set background=dark " use dark mode
 
 set number relativenumber
 set nu rnu
+set re=1
 set completeopt=longest,menuone,preview
 set completeopt-=preview
 set backspace=indent,eol,start
@@ -27,3 +28,5 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:python_host_prog = '/usr/local/bin/python'
 let g:python2_host_prog = '/usr/local/bin/python2'
 
+autocmd BufEnter *.tsx :setlocal filetype=typescript
+autocmd BufEnter *.js :setlocal filetype=javascript

@@ -14,9 +14,6 @@ alias cl="clear"
 # React native reset
 alias rni="kill $(lsof -t -i:8081); rm -rf ios/build/; react-native run-ios"
 
-# Ngrok
-alias ngrok="~/ngrok"
-
 # Android development
 
 # Compile android bachelor project to connected device or emulator.
@@ -30,3 +27,5 @@ alias psqlStart="brew services start postgresql"
 alias psqlStop="brew services stop postgresql"
 
 alias unstage="git clean -df && git checkout -- ."
+
+alias zvim='{ IFS= read -r d && z "$d" && vim .; } <<<'
