@@ -7,33 +7,6 @@ function cd {
   builtin cd "$@" && ls
 }
 
-# Builds and runs an android project to connected device or emulator
-# requires android package name as argument.
-function buildAndroid {
-    if [ $# -eq 0 ]; then
-        echo "\nError: No package name supplied!"
-        echo "Usage: buildAndroid project.package.name"
-        return 1
-    fi
-	./gradlew installDebug
-	adb shell monkey -p "$1" -c android.intent.category.LAUNCHER
-}
-
-# Starts a Pixel2 XL android emulator from a new tab.
-function startAndroidEmulator {
-    osascript -i <<EOF
-        tell application "iTerm"
-            tell current window
-                create tab with default profile
-                tell the current session
-                    write text "cd \"$PWD\""
-                    write text "clear"
-					write text "emulator -avd Pixel2xl"
-                end tell
-            end tell
-        end tell
-EOF
-}
 
 function dev {
     if [ -z $1 ]; then
@@ -97,9 +70,8 @@ function gra {
     git remote add $1 $(rwGit $2)
 }
 
-function dotfiles {
-    code ~/dotfiles
-    code ~/.zshrc
+function prune-docker {
+    docker system prune -a
 }
 
 function prune-node {
@@ -114,34 +86,9 @@ function deleteSystemLogs {
     sudo rm /var/log/asl/*.asl
 }
 
-function coffee {
-    touch ~/.coffee
-    if [[ $# -lt 1 ]]; then
-        # Add cup of coffee
-        date +%s >> ~/.coffee
-    else
-        if [ "$1" = "count" ]; then
-            echo "$(< ~/.coffee wc -l) cups of coffee logged to date"
-        fi
-    fi
-}
-
-function create-service {
-    mkdir $1 && cd $1
-    git init
-    echo "# $1" >> README.md
-    git add .
-    git commit -m "initial commit"
-    hub create MaritimeOptima/$1 -p
-    git push origin master
-}
 
 function psgrep {
     ps -ef | egrep "$1"
-}
-
-function prune-docker {
-    docker system prune -a
 }
 
 function beatsx {
@@ -229,18 +176,4 @@ osascript << EOD
     end tell
   end tell
 EOD
-}
-
-
-function argocd-add {
-    REMOTE=$(git config --get remote.origin.url)
-    argocd repo add $REMOTE --ssh-private-key-path ~/.ssh/id_argocd_rsa --insecure-ignore-host-key
-}
-
-function proxy-argo {
-    kubectl port-forward svc/argocd-server -n argocd 8080:443
-}
-
-function argocd-login {
-    argocd login localhost:8080 --sso
 }

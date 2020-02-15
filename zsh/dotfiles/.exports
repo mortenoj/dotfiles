@@ -1,70 +1,32 @@
 #!/usr/bin/env bash
 
-# Command line tools
-export SSW_SAML_USER=morten@safeseaway.com
+# ssh
+ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Java
 export PATH="$HOME/.jenv/bin:$PATH"
 # eval "$(jenv init -)"
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-11.0.2.jdk/Contents/Home
-export PATH=$JAVA_HOME/bin:$PATH
-
-# Android development
-export ANDROID_HOME="/Users/morten/Library/Android/sdk/"
-export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
-
-export ANDROID_SDK=$HOME/Library/Android/sdk
-export PATH=$ANDROID_SDK/emulator:$ANDROID_SDK/tools:$PATH
-export PATH="/Users/morten/protoc-gen-kotlin-0.3.0/bin:$PATH"
-
-export PATH=~/Library/Android/sdk/tools:$PATH
-export PATH=~/Library/Android/sdk/platform-tools:$PATH
+# https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
 
 # Golang
-# export PATH=$PATH:$GOPATH/bin
 export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
-# Deleting GO:
-# sudo rm -rfv /usr/local/go
-
 # MO
 export DEV_ENVPATH=/Users/morten/code/work
 export DEFAULT_DEV_ENV=maritimeoptima
-
-# For custom scripts
-export PATH="/Users/morten/Documents/scripts/applescripts:$PATH"
-export PATH="/Users/morten/Documents/scripts/development:$PATH"
-export PATH="/Users/morten/Documents/tools/grib2json/bin/:$PATH"
 
 # GPG
 export GPG_TTY=$(tty)
 
 export PURE_PROMPT_SYMBOL='⚡️'
 
-export GDAL_DRIVER_PATH=/usr/local/lib/gdalplugins
-export PATH=/usr/local/share/python:$PATH
-
 export EDITOR="nvim"
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
-
-# AWS development variables
-export AWS_PROFILE='ssw'
-export AWS_DEFAULT_PROFILE='ssw'
-
+# Command line tools
 # Saml authentication
-export GSAML_USER="morten@safeseaway.com"
-
-# Don't change these
-export GIP_ID='C013c4br7'   # Google SSO IDP identifie
-export GSP_ID=354598411587  # Google SSO SP identifier
-export AWS_ENVIRONMENT='development'
-export AWS_REGION='eu-central-1'
-
 export MO_USER=morten
-export VAULT_ADDR=http://vault.infrastructure:8200
+export SSW_SAML_USER=morten@safeseaway.com
+export GSAML_USER="morten@safeseaway.com"

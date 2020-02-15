@@ -2,22 +2,13 @@
 
 # Nvim
 alias vim="nvim"
+alias zvim='{ IFS= read -r d && z "$d" && vim .; } <<<'
 
 # Pbcopy
 alias c="pbcopy"
 
 # Clear
 alias cl="clear"
-
-# Javascript
-
-# React native reset
-alias rni="kill $(lsof -t -i:8081); rm -rf ios/build/; react-native run-ios"
-
-# Android development
-
-# Compile android bachelor project to connected device or emulator.
-alias buildBachelor="buildAndroid com.streambim.ar"
 
 # Kotlin lint
 alias ktlint="./gradlew ktlintFormat"
@@ -27,5 +18,3 @@ alias psqlStart="brew services start postgresql"
 alias psqlStop="brew services stop postgresql"
 
 alias unstage="git clean -df && git checkout -- ."
-
-alias zvim='{ IFS= read -r d && z "$d" && vim .; } <<<'
