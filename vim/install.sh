@@ -11,8 +11,8 @@ mkdir -p ~/.config/nvim
 
 # Install virtualenv to containerize dependencies
 echo "Installing virtualenv"
-python3 -m pip install virtualenv
-python3 -m virtualenv -p python3 ~/.config/nvim/env
+python3 -m pip install virtualenv --user
+sudo python3 -m virtualenv -p python3 ~/.config/nvim/env
 
 # Install pip modules for Neovim within the virtual environment created
 echo "Activate virtualenv and install libraries for async autocompletion"
@@ -25,16 +25,14 @@ echo "Install plug for vim"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install fonts for airline bar
-# echo "Downloading fonts"
-# brew tap homebrew/cask-fonts
-# brew cask install font-droidsansmono-nerd-font
+echo "Downloading fonts"
+brew tap homebrew/cask-fonts
+brew cask install font-droidsansmono-nerd-font
 
 npm install -g javascript-typescript-langserver
 
 echo "Recommended add an alias to from vim to nvim"
 echo "alias vim='nvim'"
-
-
 
 # Running plug install
 sed '/call plug#end/q' init.vim > ~/.config/nvim/init.vim
@@ -42,5 +40,4 @@ nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
 rm ~/.config/nvim/init.vim
 
 # Copy init.vim
-cp init.vim ~/.config/nvim/
-cp -r configs ~/.config/nvim/
+cp -r init.vim plugin ftplugin ~/.config/nvim/
