@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 
+# Scripts
+source $HOME/Tools/scripts/btconnect/btconnect.sh
+
+
+# Source all main.sh files in scripts path
+for file in $(find $SCRIPTS_PATH -name "main.sh"); do
+    [ -f "$file" ] && source "$file"
+done
+
+
 # SSW
-source /Users/morten/code/terminal-utilities/include.sh
+source $HOME/Code/work/terminal-utilities/include.sh
 
 # Syntax highlighting and autocomplete
-source /Users/morten/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/Tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Z - rupa

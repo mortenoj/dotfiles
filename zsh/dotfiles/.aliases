@@ -7,6 +7,9 @@ alias zvim='{ IFS= read -r d && z "$d" && vim .; } <<<'
 # Pbcopy
 alias c="pbcopy"
 
+# Kubectl
+alias k="kubectl"
+
 # Clear
 alias cl="clear"
 

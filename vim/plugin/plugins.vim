@@ -41,14 +41,38 @@ let g:NERDTreeDirArrowExpandable = '↠'
 let g:NERDTreeDirArrowCollapsible = '↡'
 let g:NERDTreeIgnore = ['\.meta$']
 
+" Open NERDTree on vim enter
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close vim with q when NERDtree is the only window open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+\ }
+
+
 """ =========================================================================
 """ =============================== OmniSharp ===============================
 """ =========================================================================
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_server_use_mono = 1
 
-let g:OmniSharp_selector_ui = 'fzf'    " Use fzf.vim
-let g:OmniSharp_highlight_types = 3
+let g:OmniSharp_selector_ui = 'fzf'
+let g:OmniSharp_highlight_types = 1
+
+"let g:OmniSharp_proc_debug = 1
+"let g:OmniSharp_loglevel = 'debug'
 
 """ =========================================================================
 """ ================================== ALE ==================================
@@ -72,8 +96,11 @@ let g:ale_fixers = {
 \   'html': ['prettier'],
 \   'python': ['black'],
 \   'cpp': ['clang'],
-\   'go': ['gofmt', 'goimports', 'remove_trailing_lines', 'trim_whitespace']
+\   'cs': ['uncrustify'],
+\   'go': ['gofmt', 'goimports'],
 \}
+
+let g:ale_go_gofmt_options = "-s"
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
@@ -89,7 +116,6 @@ let g:ale_keep_list_window_open = 1
 
 
 let g:airline#extensions#ale#enabled = 1
-
 
 """ =========================================================================
 """ ================================== FZF ==================================

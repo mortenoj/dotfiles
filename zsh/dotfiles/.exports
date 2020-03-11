@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
+# Path to custom scripts
+export SCRIPTS_PATH="$HOME/Tools/scripts"
+
 # ssh
- export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Java
 export PATH="$HOME/.jenv/bin:$PATH"
@@ -15,7 +18,7 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # MO
-export DEV_ENVPATH=/Users/morten/code/work
+export DEV_ENVPATH=/Users/morten/Code/work
 export DEFAULT_DEV_ENV=maritimeoptima
 
 # GPG
@@ -24,6 +27,8 @@ export GPG_TTY=$(tty)
 export PURE_PROMPT_SYMBOL='⚡️'
 
 export EDITOR="nvim"
+
+export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 
 # Command line tools
 # Saml authentication

@@ -11,10 +11,10 @@ let g:go_highlight_build_constraints = 1
 
 " Settings for golangci for ALE
 let g:ale_go_golangci_lint_package=1
-let g:ale_go_golangci_lint_options = '--enable-all --disable lll'
+let g:ale_go_golangci_lint_options = '--enable-all --disable=gomnd --exclude-use-default=false'
 
 let g:ale_go_staticcheck_lint_package = 1
 
 " Get IndentLine working after vim-go disables it
 "setlocal expandtab
-set list lcs=tab:¦\ 
+set list lcs=tab:¦\ ,

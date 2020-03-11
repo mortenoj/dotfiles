@@ -24,10 +24,11 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'jiangmiao/auto-pairs'             " Auto complete quotes and brackets
     Plug 'scrooloose/nerdcommenter'         " Commenter
     Plug 'scrooloose/nerdtree'              " File Tree
+    Plug 'Xuyuanp/nerdtree-git-plugin'      " GIT status in nerdtree
+
     Plug 'sbdchd/neoformat'                 " Formatter
     Plug 'tpope/vim-fugitive'               " Git commands
     Plug 'dense-analysis/ale'               " Code checker
-    Plug 'sheerun/vim-polyglot'             " Language support (formatting)
     Plug 'Yggdroot/indentLine'              " Indent lines
     Plug 'machakann/vim-highlightedyank'    " Highlight yanked lines
     Plug '/usr/local/opt/fzf'               " Required by fzf.vim
@@ -44,9 +45,12 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
     Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
-    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
     Plug 'OmniSharp/omnisharp-vim'
+    Plug 'tpope/vim-dispatch'
+
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Golang support
+
+    Plug 'sheerun/vim-polyglot'             " Language support (formatting)
 
     " Language client for extended support for some languages
     Plug 'autozimu/LanguageClient-neovim', {
