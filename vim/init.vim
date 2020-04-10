@@ -59,6 +59,6 @@ call plug#begin('~/.config/nvim/plugged')
     \ }
 
 
-
-
+    Plug 'HerringtonDarkholme/yats.vim'
+    Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 call plug#end()

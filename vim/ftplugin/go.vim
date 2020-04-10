@@ -10,6 +10,10 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 " Settings for golangci for ALE
+let b:ale_linters = ['gopls', 'golangci-lint']
+let b:ale_fixers = ['gofmt', 'goimports']
+let g:ale_go_gofmt_options = "-s"
+
 let g:ale_go_golangci_lint_package=1
 let g:ale_go_golangci_lint_options = '--enable-all --disable=gomnd --exclude-use-default=false'
 

@@ -1,3 +1,6 @@
+let b:ale_linters = ['pyls']
+let b:ale_fixers = ['black']
+
 let python_highlight_all=1
 let g:python3_host_prog = expand('/usr/local/bin/python3')
 let g:python_host_prog = '/usr/local/bin/python'

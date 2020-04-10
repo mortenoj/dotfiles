@@ -1,3 +1,6 @@
+let b:ale_linters = ['OmniSharp']
+let b:ale_fixers = ['uncrustify']
+
 setlocal omnifunc=OmniSharp#Complete
 
 nnoremap gd :OmniSharpGotoDefinition<CR>
