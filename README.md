@@ -1,6 +1,6 @@
 # dotfiles
 
-*My dotfiles and a new mac setup script*
+*Dotfiles and setup script*
 
 ### Run
 
