@@ -9,7 +9,6 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Java
 export PATH="$HOME/.jenv/bin:$PATH"
 # eval "$(jenv init -)"
-
 # https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
 
 # Golang
@@ -18,8 +17,9 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # MO
-export DEV_ENVPATH=/Users/morten/Code/work
+export DEV_ENVPATH=/Users/morten/Code/work/maritimeoptima
 export DEFAULT_DEV_ENV=maritimeoptima
+export MO_USER=morten
 
 # GPG
 export GPG_TTY=$(tty)
@@ -28,10 +28,10 @@ export PURE_PROMPT_SYMBOL='⚡️'
 
 export EDITOR="nvim"
 
+# C# Mono path
 export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 
 # Command line tools
 # Saml authentication
-export MO_USER=morten
-export SSW_SAML_USER=morten@safeseaway.com
-export GSAML_USER="morten@safeseaway.com"
+#export SSW_SAML_USER=morten@safeseaway.com
+#export GSAML_USER="morten@safeseaway.com"

@@ -13,9 +13,6 @@ alias k="kubectl"
 # Clear
 alias cl="clear"
 
-# Kotlin lint
-alias ktlint="./gradlew ktlintFormat"
-
 # PostGreSQL
 alias psqlStart="brew services start postgresql"
 alias psqlStop="brew services stop postgresql"

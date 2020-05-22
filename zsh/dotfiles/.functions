@@ -86,7 +86,6 @@ function deleteSystemLogs {
     sudo rm /var/log/asl/*.asl
 }
 
-
 function psgrep {
     ps -ef | egrep "$1"
 }

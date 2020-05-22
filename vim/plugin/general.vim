@@ -19,6 +19,8 @@ set number
 set title
 set guifont=DroidSansMono\ Nerd\ Font:h11
 
+set clipboard+=unnamedplus
+
 " Yank highlight
 hi HighlightedyankRegion cterm=reverse gui=reverse
 let g:highlightedyank_highlight_duration = 400

@@ -12,7 +12,3 @@ nnoremap <Leader>fm :OmniSharpFindMembers<CR>
 call deoplete#custom#option('omni_patterns', {
 \   'cs': '[^. *\t]\.\w*',
 \})
-
-"call deoplete#custom#option('sources', {
-		"\ 'cs': ['omnisharp'],
-		"\})

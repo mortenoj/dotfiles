@@ -30,3 +30,7 @@ nnoremap <Leader>E :ALEPreviousWrap<CR>
 
 " FZF
 nmap <leader>f :Files<CR>
+
+" Quality of life
+vnoremap < <gv
+vnoremap > >gv
