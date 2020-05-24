@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+# Sources .zshrc
+function reload {
+	source ~/.zshrc
+}
+
 # Android development
 
 # `ls` after `cd`
 function cd {
   builtin cd "$@" && ls
 }
-
 
 function dev {
     if [ -z $1 ]; then

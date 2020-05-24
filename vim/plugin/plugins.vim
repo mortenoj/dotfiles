@@ -1,36 +1,23 @@
 """ =========================================================================
-""" ============================ Language Client ============================
+""" ============================= Coc extensions ============================
 """ =========================================================================
-let g:LanguageClient_autoStart = 1
-
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ }
-    "\ 'go': ['gopls'],
-    "\ 'typescript': ['javascript-typescript-stdio'],
-    "\ 'typescriptreact': ['javascript-typescript-stdio'],
-
-let g:LanguageClient_useVirtualText = "No"
-let g:LanguageClient_diagnosticsEnable = 0
-
-
-""" =========================================================================
-""" ================================ Deoplete ===============================
-""" =========================================================================
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
-
-" Use supertab plugin to enable scrolling with tab and shift+tab
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:coc_global_extensions = [
+    \ 'coc-tslint-plugin',
+    \ 'coc-tsserver',
+    \ 'coc-emmet',
+    \ 'coc-css',
+    \ 'coc-html',
+    \ 'coc-json',
+    \ 'coc-prettier',
+    \ 'coc-omnisharp',
+    \ 'coc-go',
+    \ 'coc-cmake',
+    \ 'coc-eslint',
+    \ 'coc-html',
+    \ 'coc-java',
+    \ 'coc-jedi',
+    \ 'coc-yaml',
+\ ]
 
 
 """ =========================================================================
@@ -60,19 +47,6 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
 \ }
-
-
-""" =========================================================================
-""" =============================== OmniSharp ===============================
-""" =========================================================================
-let g:OmniSharp_server_stdio = 1
-let g:OmniSharp_server_use_mono = 1
-
-let g:OmniSharp_selector_ui = 'fzf'
-let g:OmniSharp_highlight_types = 1
-
-"let g:OmniSharp_proc_debug = 1
-"let g:OmniSharp_loglevel = 'debug'
 
 """ =========================================================================
 """ ================================== ALE ==================================

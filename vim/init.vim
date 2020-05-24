@@ -20,10 +20,12 @@ call plug#begin('~/.config/nvim/plugged')
 
     """============== Functional plugins ==============
 
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " Auto completer
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
     Plug 'jiangmiao/auto-pairs'             " Auto complete quotes and brackets
     Plug 'scrooloose/nerdcommenter'         " Commenter
     Plug 'scrooloose/nerdtree'              " File Tree
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'Xuyuanp/nerdtree-git-plugin'      " GIT status in nerdtree
 
     Plug 'sbdchd/neoformat'                 " Formatter
@@ -33,17 +35,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'machakann/vim-highlightedyank'    " Highlight yanked lines
     Plug '/usr/local/opt/fzf'               " Required by fzf.vim
     Plug 'junegunn/fzf.vim'                 " Fuzzy file finder
-    Plug 'ervandew/supertab'                " Tab for autocompletion
 
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
-
     """============== Language plugins ==============
-
-    Plug 'zchee/deoplete-jedi'
-    Plug 'zchee/deoplete-clang'
-    Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-    Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 
     Plug 'OmniSharp/omnisharp-vim'
     Plug 'tpope/vim-dispatch'
@@ -52,13 +47,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'sheerun/vim-polyglot'             " Language support (formatting)
 
-    " Language client for extended support for some languages
-    Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
-
     Plug 'HerringtonDarkholme/yats.vim'
-    Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+
 call plug#end()

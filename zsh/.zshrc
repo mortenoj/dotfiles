@@ -3,7 +3,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/morten/.oh-my-zsh"
 
-plugins=()
+plugins=(z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -13,11 +13,6 @@ ZSH_THEME=""
 for dotfile in $(find ~/.dotfiles -name ".*"); do
     [ -f "$dotfile" ] && source "$dotfile"
 done
-
-# Sources .zshrc
-function reload {
-	source ~/.zshrc
-}
 
 # Kubectl autocomplete
 source <(kubectl completion zsh)

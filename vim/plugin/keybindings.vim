@@ -34,3 +34,7 @@ nmap <leader>f :Files<CR>
 " Quality of life
 vnoremap < <gv
 vnoremap > >gv
+
+vnoremap <ESC> <C-c>
+
+nmap <silent> gd <Plug>(coc-definition)
