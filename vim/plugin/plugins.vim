@@ -1,24 +1,61 @@
+
 """ =========================================================================
-""" ============================= Coc extensions ============================
+""" ================================ CocVim =================================
 """ =========================================================================
 let g:coc_global_extensions = [
-    \ 'coc-tslint-plugin',
-    \ 'coc-tsserver',
-    \ 'coc-emmet',
     \ 'coc-css',
-    \ 'coc-html',
-    \ 'coc-json',
-    \ 'coc-prettier',
-    \ 'coc-omnisharp',
-    \ 'coc-go',
-    \ 'coc-cmake',
-    \ 'coc-eslint',
+    \ 'coc-clangd',
     \ 'coc-html',
     \ 'coc-java',
     \ 'coc-jedi',
+    \ 'coc-json',
+    \ 'coc-go',
+    \ 'coc-markdownlint',
+    \ 'coc-omnisharp',
     \ 'coc-yaml',
+    \ 'coc-yank',
+    \ 'coc-xml',
+    \ 'coc-snippets',
+    \ 'coc-pairs',
+    \ 'coc-tsserver',
+    \ 'coc-prettier',
+    \ 'coc-eslint',
+    \ 'coc-json',
 \ ]
 
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" From CocVim recommended settings
+
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 """ =========================================================================
 """ =============================== NERDTree ================================
@@ -26,7 +63,7 @@ let g:coc_global_extensions = [
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeDirArrowExpandable = '↠'
 let g:NERDTreeDirArrowCollapsible = '↡'
-let g:NERDTreeIgnore = ['\.meta$']
+let g:NERDTreeIgnore = ['\.meta$', '^node_modules$']
 
 " Open NERDTree on vim enter
 autocmd StdinReadPre * let s:std_in=1
@@ -51,14 +88,15 @@ let g:NERDTreeIndicatorMapCustom = {
 """ =========================================================================
 """ ================================== ALE ==================================
 """ =========================================================================
-let g:ale_linters = {
-\   'vue': ['eslint'],
+let g:ale_pattern_options = {
+\   '.*\.json$': {'ale_enabled': 0},
+\   '.*\.js$': {'ale_enabled': 0},
+\   '.*\.ts$': {'ale_enabled': 0},
+\   '.*\.jsx$': {'ale_enabled': 0},
+\   '.*\.tsx$': {'ale_enabled': 0},
 \}
 
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'vue': ['eslint'],
-\}
+let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'

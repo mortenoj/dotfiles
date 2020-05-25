@@ -16,4 +16,3 @@ for file in "${configs[@]}"; do
     rm -rf "vim/$file"
     cp -r ~/.config/nvim/$file vim/$file
 done
-

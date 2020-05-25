@@ -1,14 +1,16 @@
-let b:ale_linters = ['OmniSharp']
-let b:ale_fixers = ['uncrustify']
+"let b:coc_global_extensions = ['coc-omnisharp']
 
-setlocal omnifunc=OmniSharp#Complete
+"let b:ale_linters = ['OmniSharp']
+"let b:ale_fixers = ['uncrustify']
 
-nnoremap gd :OmniSharpGotoDefinition<CR>
-nnoremap <Leader>fi :OmniSharpFindImplementations<CR>
-nnoremap <Leader>fs :OmniSharpFindSymbol<CR>
-nnoremap <Leader>fu :OmniSharpFindUsages<CR>
-nnoremap <Leader>fm :OmniSharpFindMembers<CR>
+"setlocal omnifunc=OmniSharp#Complete
 
-call deoplete#custom#option('omni_patterns', {
-\   'cs': '[^. *\t]\.\w*',
-\})
+"nnoremap gd :OmniSharpGotoDefinition<CR>
+"nnoremap <Leader>fi :OmniSharpFindImplementations<CR>
+"nnoremap <Leader>fs :OmniSharpFindSymbol<CR>
+"nnoremap <Leader>fu :OmniSharpFindUsages<CR>
+"nnoremap <Leader>fm :OmniSharpFindMembers<CR>
+
+"call deoplete#custom#option('omni_patterns', {
+"\   'cs': '[^. *\t]\.\w*',
+"\})
