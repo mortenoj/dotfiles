@@ -1,4 +1,3 @@
-
 """ =========================================================================
 """ ================================ CocVim =================================
 """ =========================================================================
@@ -21,6 +20,9 @@ let g:coc_global_extensions = [
     \ 'coc-prettier',
     \ 'coc-eslint',
     \ 'coc-json',
+    \ 'coc-emmet',
+    \ 'coc-diagnostic',
+    \ 'coc-python',
 \ ]
 
 " Highlight the symbol and its references when holding the cursor.
@@ -57,6 +59,8 @@ else
   set signcolumn=yes
 endif
 
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 """ =========================================================================
 """ =============================== NERDTree ================================
 """ =========================================================================
@@ -72,28 +76,14 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Close vim with q when NERDtree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-\ }
+let NERDTreeQuitOnOpen = 1
 
 """ =========================================================================
 """ ================================== ALE ==================================
 """ =========================================================================
 let g:ale_pattern_options = {
-\   '.*\.json$': {'ale_enabled': 0},
-\   '.*\.js$': {'ale_enabled': 0},
-\   '.*\.ts$': {'ale_enabled': 0},
-\   '.*\.jsx$': {'ale_enabled': 0},
-\   '.*\.tsx$': {'ale_enabled': 0},
+\   '*': {'ale_enabled': 0},
+\   '.*\.go$': {'ale_enabled': 1},
 \}
 
 let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
@@ -106,37 +96,13 @@ let g:ale_fix_on_save = 1
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 1
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 1
 
-let g:ale_list_window_size = 10
+let g:ale_list_window_size = 6
 
 let g:airline#extensions#ale#enabled = 1
-
-""" =========================================================================
-""" ================================== FZF ==================================
-""" =========================================================================
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'Type'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Character'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
-
 
 """ =========================================================================
 """ ================================== CLAP =================================
@@ -144,7 +110,6 @@ let g:fzf_colors =
 
 let g:clap_layout = { 'relative': 'editor' }
 let g:clap_theme = 'material_design_dark'
-
 
 """ =========================================================================
 """ ============================ Neovim Terminal ============================
@@ -154,3 +119,9 @@ tmap <C-w> <Esc><C-w>
 
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave term://* stopinsert
+
+
+""" =========================================================================
+""" ================================ EasyGit ================================
+""" =========================================================================
+let g:easygit_enable_command = 1

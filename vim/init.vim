@@ -7,8 +7,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     """ Color schemes
     Plug 'joshdick/onedark.vim'
-    Plug 'trevordmiller/nova-vim'
-    Plug 'liuchengxu/space-vim-theme'
+    Plug 'sonph/onehalf', {'rtp': 'vim/'}
+    Plug 'kyoz/purify', { 'rtp': 'vim' }
+
 
     """ Airline
     Plug 'vim-airline/vim-airline'
@@ -20,31 +21,46 @@ call plug#begin('~/.config/nvim/plugged')
 
     """============== Functional plugins ==============
 
+    " Inelisense for VIM
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    Plug 'scrooloose/nerdcommenter'         " Commenter
-    Plug 'scrooloose/nerdtree'              " File Tree
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'Xuyuanp/nerdtree-git-plugin'      " GIT status in nerdtree
+    " Surround
+    Plug 'tpope/vim-surround'
 
-    Plug 'tpope/vim-fugitive'               " Git commands
-    Plug 'dense-analysis/ale'               " Code checker
-    Plug 'Yggdroot/indentLine'              " Indent lines
-    Plug '/usr/local/opt/fzf'               " Required by fzf.vim
-    Plug 'junegunn/fzf.vim'                 " Fuzzy file finder
+    Plug 'vifm/vifm.vim'
 
-    "Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+    " Filetree
+    Plug 'preservim/nerdtree'
 
-    Plug 'tpope/vim-dispatch' " Make
+    " Git plugins
+    Plug 'tpope/vim-fugitive'
+    Plug 'neoclide/vim-easygit'
 
-    Plug 'christoomey/vim-tmux-navigator'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
+
+    " Code checker
+    Plug 'dense-analysis/ale'
+
+    " Visualize indenting
+    Plug 'Yggdroot/indentLine'
+
+    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+
+    " For make in vim
+    Plug 'tpope/vim-dispatch'
 
 
     """============== Language plugins ==============
 
-    Plug 'sheerun/vim-polyglot'             " Language support (formatting)
+    " Multi language support
+    Plug 'sheerun/vim-polyglot'
 
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " Golang support
-
+    " Typescript
     Plug 'HerringtonDarkholme/yats.vim'
+
+    Plug 'pangloss/vim-javascript'
+
+    " Commenting based on context (JSX)
+    Plug 'tyru/caw.vim'
+    Plug 'Shougo/context_filetype.vim'
 call plug#end()

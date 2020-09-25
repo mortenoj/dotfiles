@@ -10,6 +10,23 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 export PATH="$HOME/.jenv/bin:$PATH"
 # eval "$(jenv init -)"
 # https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+
+# VIFM
+export PATH="$HOME/.config/vifm/scripts:$PATH"
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Android
+export ANDROID_SDK=$HOME/Library/Android/sdk
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH="$PATH:$ANDROID_SDK/emulator"
+export PATH="$PATH:$ANDROID_SDK/tools"
+export PATH="$PATH:$ANDROID_SDK/platform-tools"
+export LD_LIBRARY_PATH=$ANDROID_SDK/tools/lib:$LD_LIBRARY_PATH
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
 
 # Golang
 export GOPATH="${HOME}/.go"
@@ -31,7 +48,5 @@ export EDITOR="nvim"
 # C# Mono path
 export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 
-# Command line tools
-# Saml authentication
-#export SSW_SAML_USER=morten@safeseaway.com
-#export GSAML_USER="morten@safeseaway.com"
+# Ruby
+export PATH="/usr/local/opt/ruby/bin:$PATH"

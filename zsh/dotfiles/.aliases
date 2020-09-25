@@ -2,6 +2,7 @@
 
 # Nvim
 alias vim="nvim"
+alias vifm="vifm ."
 alias zvim='{ IFS= read -r d && z "$d" && vim .; } <<<'
 
 # Pbcopy
@@ -18,3 +19,14 @@ alias psqlStart="brew services start postgresql"
 alias psqlStop="brew services stop postgresql"
 
 alias unstage="git clean -df && git checkout -- ."
+
+# Tmuxinator
+alias t="tmuxinator"
+
+alias mvi='mpv --config-dir=$HOME/.config/mvi'
+
+# cd aliases
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."

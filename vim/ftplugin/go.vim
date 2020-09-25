@@ -1,21 +1,16 @@
-let g:go_fmt_command = "goimports"
-
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
 " Get IndentLine working after vim-go disables it
 set list lcs=tab:¦\ ,
 
+let b:ale_enabled = 1
+
 " Settings for golangci for ALE
-let b:ale_linters = ['gopls', 'golangci-lint']
 let b:ale_linters = ['golangci-lint']
 let b:ale_fixers = ['gofmt', 'goimports']
-let g:ale_go_gofmt_options = "-s"
+let b:ale_go_gofmt_options = "-s"
 
-let g:ale_go_golangci_lint_package=1
-let g:ale_go_golangci_lint_options = '--enable-all --disable=gomnd --exclude-use-default=false'
+let b:ale_go_golangci_lint_package = 1
+let b:ale_go_golangci_lint_options = '--enable-all --disable=gomnd --disable=godot --disable=lll --exclude-use-default=false'
+let b:ale_go_staticcheck_lint_package = 1
 
-let g:ale_go_staticcheck_lint_package = 1
+nnoremap <Leader>e :ALENextWrap<CR>
+nnoremap <Leader>E :ALEPreviousWrap<CR>

@@ -5,8 +5,6 @@ function reload {
 	source ~/.zshrc
 }
 
-# Android development
-
 # `ls` after `cd`
 function cd {
   builtin cd "$@" && ls
@@ -88,6 +86,7 @@ function prune-DS_Store {
 
 function deleteSystemLogs {
     sudo rm /var/log/asl/*.asl
+    sudo rm -i /private/var/log/asl/*.asl
 }
 
 function psgrep {
