@@ -100,7 +100,7 @@ let g:ale_lint_on_enter = 1
 let g:ale_open_list = 1
 let g:ale_keep_list_window_open = 1
 
-let g:ale_list_window_size = 6
+let g:ale_list_window_size = 5
 
 let g:airline#extensions#ale#enabled = 1
 
@@ -124,4 +124,4 @@ autocmd BufLeave term://* stopinsert
 """ =========================================================================
 """ ================================ EasyGit ================================
 """ =========================================================================
-let g:easygit_enable_command = 1
+let g:easygit_enable_command = 0
