@@ -32,6 +32,12 @@ set noerrorbells
 set nobackup
 set noswapfile
 
+" show a ... for wrapping lines
+" set showbreak=...
+
+" don't wrap mid-word
+set linebreak
+
 " set guifont=DroidSansMono\ Nerd\ Font:h11
 set guifont=MesloLGM\ Nerd\ Font\ Mono:h11
 

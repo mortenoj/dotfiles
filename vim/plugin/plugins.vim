@@ -3,26 +3,26 @@
 """ =========================================================================
 let g:coc_global_extensions = [
     \ 'coc-css',
-    \ 'coc-clangd',
     \ 'coc-html',
     \ 'coc-java',
-    \ 'coc-jedi',
+    \ 'coc-tsserver',
+    \ 'coc-prettier',
+    \ 'coc-eslint',
+    \ 'coc-emmet',
     \ 'coc-json',
+    \ 'coc-snippets',
     \ 'coc-go',
+    \ 'coc-clangd',
+    \ 'coc-jedi',
     \ 'coc-markdownlint',
     \ 'coc-omnisharp',
     \ 'coc-yaml',
     \ 'coc-yank',
     \ 'coc-xml',
-    \ 'coc-snippets',
     \ 'coc-pairs',
-    \ 'coc-tsserver',
-    \ 'coc-prettier',
-    \ 'coc-eslint',
-    \ 'coc-json',
-    \ 'coc-emmet',
     \ 'coc-diagnostic',
     \ 'coc-python',
+    \ 'coc-vimtex',
 \ ]
 
 " Highlight the symbol and its references when holding the cursor.
@@ -109,7 +109,14 @@ let g:airline#extensions#ale#enabled = 1
 """ =========================================================================
 
 let g:clap_layout = { 'relative': 'editor' }
-let g:clap_theme = 'material_design_dark'
+" let g:clap_theme = 'material_design_dark'
+" let g:clap_background_shadow_blend = 100
+let g:clap_enable_background_shadow = v:false
+
+let g:clap_theme = ''
+let g:clap_popup_input_delay = 0
+let g:clap_provider_grep_delay = 0
+let g:clap_provider_grep_opts = ''
 
 """ =========================================================================
 """ ============================ Neovim Terminal ============================
@@ -125,3 +132,19 @@ autocmd BufLeave term://* stopinsert
 """ ================================ EasyGit ================================
 """ =========================================================================
 let g:easygit_enable_command = 0
+
+
+""" =========================================================================
+""" ================================ VimTex =================================
+""" =========================================================================
+let g:vimtex_view_general_viewer = 'skim'
+let g:vimtex_view_skim_activate = 1
+
+" TOC settings
+let g:vimtex_toc_config = {
+    \ 'name': 'Table of contents (vimtex)',
+    \ 'mode': 2,
+    \ 'split_width': 50,
+    \ 'show_help': 0,
+    \ 'tocdepth': 2,
+    \ }

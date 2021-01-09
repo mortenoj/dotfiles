@@ -31,9 +31,11 @@ nmap <leader>q :NERDTreeToggle<CR>
 
 " Clap
 nmap <leader>f :Clap files<CR>
-nmap <leader>g :Clap grep<CR>
-nmap <leader>d :Clap grep ++query=<cword><CR>
-vmap <leader>d :Clap grep ++query=@visual <CR>
+nmap <leader>F :Clap blines<CR>
+nmap <leader>j :Clap jumps<CR>
+nmap <leader>g :Clap grep2<CR>
+nmap <leader>d :Clap grep2 ++query=<cword><CR>
+vmap <leader>d :Clap grep2 ++query=@visual <CR>
 nmap <leader>ee :Clap colors<CR>
 
 " Colors
@@ -52,6 +54,8 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-x> <C-w>x
 
+nnoremap j gj
+nnoremap k gk
 
 " Keep selection when indenting
 vnoremap < <gv

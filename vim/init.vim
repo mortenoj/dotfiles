@@ -63,4 +63,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Commenting based on context (JSX)
     Plug 'tyru/caw.vim'
     Plug 'Shougo/context_filetype.vim'
+
+    " Latex support used by coc-vimtex
+    Plug 'lervag/vimtex'
 call plug#end()

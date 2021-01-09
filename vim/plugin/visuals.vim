@@ -37,6 +37,9 @@ highlight ALEWarning ctermbg=DarkMagenta
 :endfunction
 
 :function DarkMode()
-    colorscheme onehalfdark
+    " colorscheme onehalfdark
+    colorscheme purify
     set background=dark
 :endfunction
+
+hi HighlightedyankRegion term=bold ctermbg=0 guibg=#555555

@@ -84,6 +84,10 @@ function prune-DS_Store {
     find . -name '.DS_Store' -type f -delete
 }
 
+function prune-telepresence {
+    find . -name 'telepresence.log' -type f -delete
+}
+
 function deleteSystemLogs {
     sudo rm /var/log/asl/*.asl
     sudo rm -i /private/var/log/asl/*.asl
