@@ -40,4 +40,4 @@ nvim -c ':PlugInstall' -c ':UpdateRemotePlugins' -c ':qall'
 rm ~/.config/nvim/init.vim
 
 # Copy init.vim
-cp -r init.vim plugin ftplugin ~/.config/nvim/
+cp -r init.vim plugin ftplugin coc-settings.json ~/.config/nvim/

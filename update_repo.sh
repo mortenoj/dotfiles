@@ -10,6 +10,7 @@ declare -a configs=(
     "init.vim"
     "ftplugin"
     "plugin"
+    "coc-settings.json"
 )
 
 for file in "${configs[@]}"; do
