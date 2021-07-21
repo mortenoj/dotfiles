@@ -22,6 +22,9 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 #sudo scutil --set LocalHostName "0x6D746873"
 #sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x6D746873"
 
+# appswitcher on all monitors
+defaults write com.apple.Dock appswitcher-all-displays -bool true
+
 # Disables applications in dock bouncing on BEL signal
 defaults write com.apple.dock no-bouncing -bool true
 
