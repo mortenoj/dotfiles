@@ -4,14 +4,40 @@ ENABLE_CORRECTION="true"
 DISABLE_MAGIC_FUNCTIONS="true"
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
 
 # Load pure promt
-autoload -U promptinit; promptinit
 autoload -Uz compinit
 compinit
+
+autoload -U promptinit; promptinit
+
+PURE_CMD_MAX_EXEC_TIME=10
+
+# Pure prompt colors
+zstyle :prompt:pure:path color blue
+zstyle :prompt:pure:host color 242
+
+zstyle :prompt:pure:git:arrow color cyan
+zstyle :prompt:pure:git:stash color cyan
+zstyle :prompt:pure:git:stash show yes
+
+zstyle :prompt:pure:git:branch color "#808e9b" # default 242
+zstyle :prompt:pure:git:branch:cached color red
+
+zstyle :prompt:pure:git:action color 242
+zstyle :prompt:pure:git:dirty color 218
+
+zstyle :prompt:pure:prompt:error color red
+zstyle :prompt:pure:prompt:success color magenta
+zstyle :prompt:pure:prompt:continuation color 242
+
+zstyle :prompt:pure:user color 242
+zstyle :prompt:pure:user:root color default
+zstyle :prompt:pure:virtualenv color "#808e9b" # default 242
+
 prompt pure

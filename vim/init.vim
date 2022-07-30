@@ -18,8 +18,17 @@ call plug#begin('~/.config/nvim/plugged')
     """ Icons
     Plug 'ryanoasis/vim-devicons'
 
+    """ Color color values in files
+    Plug 'norcalli/nvim-colorizer.lua'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 
     """============== Functional plugins ==============
+
+    " Follow symlinks
+    Plug 'moll/vim-bbye'
+    Plug 'aymericbeaumet/vim-symlink'
 
     " Inelisense for VIM
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -38,9 +47,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'tmux-plugins/vim-tmux-focus-events'
 
-    " Code checker
-    Plug 'dense-analysis/ale'
-
     " Visualize indenting
     Plug 'Yggdroot/indentLine'
 
@@ -49,6 +55,10 @@ call plug#begin('~/.config/nvim/plugged')
     " For make in vim
     Plug 'tpope/vim-dispatch'
 
+    Plug 'tpope/vim-dadbod'
+    Plug 'kristijanhusak/vim-dadbod-ui'
+
+    Plug 'rlane/pounce.nvim'
 
     """============== Language plugins ==============
 
@@ -67,3 +77,9 @@ call plug#begin('~/.config/nvim/plugged')
     " Latex support used by coc-vimtex
     Plug 'lervag/vimtex'
 call plug#end()
+
+" manual install for golang-ci-lint server
+" go get github.com/nametake/golangci-lint-langserver
+
+
+set termguicolors

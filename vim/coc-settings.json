@@ -1,0 +1,71 @@
+{
+  "eslint.autoFixOnSave": true,
+  "prettier.disableSuccessMessage": true,
+  "languageserver": {
+    /* manual install for golangci-lint                    */
+    /* go get github.com/nametake/golangci-lint-langserver */
+    "golangci-lint-languageserver": {
+      "command": "golangci-lint-langserver",
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "command": [
+          "golangci-lint",
+          "run",
+          "--enable-all",
+          "--exclude-use-default=false",
+          "--disable=lll",
+          "--disable=gomnd",
+          "--disable=wrapcheck",
+          "--out-format=json"
+        ]
+      }
+    },
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [
+        ".ccls",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "initializationOptions": {
+        "cache": {
+          "directory": "/tmp/ccls"
+        }
+      }
+    },
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      // customize filetypes to your needs
+      "filetypes": ["graphql"]
+    }
+  },
+  "coc.preferences.rootPatterns": [
+    ".python-root",
+    "go.mod",
+    ".git",
+    ".hg",
+    ".projections.json"
+  ],
+  "python.pythonPath": "python",
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "css",
+    "markdown",
+    "Markdown",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "go",
+    "json",
+    "jsonc"
+  ],
+  "yank.highlight.enable": true,
+  "yank.highlight.duration": 400,
+  "suggest.noselect": true,
+  "diagnostic.checkCurrentLine": true
+}

@@ -34,6 +34,7 @@ nmap <leader>f :Clap files<CR>
 nmap <leader>F :Clap blines<CR>
 nmap <leader>j :Clap jumps<CR>
 nmap <leader>g :Clap grep2<CR>
+nmap <leader>G :Clap grep2 +no-cache<CR>
 nmap <leader>d :Clap grep2 ++query=<cword><CR>
 vmap <leader>d :Clap grep2 ++query=@visual <CR>
 nmap <leader>ee :Clap colors<CR>

@@ -18,15 +18,27 @@ highlight NonText guibg=none
 
 highlight Normal ctermfg=12 ctermbg=8 cterm=NONE
 
+" Clear line hightlight
+hi clear CursorLine
+augroup CLClear
+    autocmd! ColorScheme * hi clear CursorLine
+augroup END
+
+" Highlight line number
+highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guibg=NONE guifg=NONE
+set cursorline
+
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = ' %{strftime("%-I:%M %p")}'
 let g:airline_section_warning = ''
 
 set background=dark
 
-colorscheme purify
+" colorscheme purify
+colorscheme onedark
 
 let g:airline_theme='onehalfdark'
+let g:onedark_terminal_italics=1
 
 " ALE
 highlight ALEWarning ctermbg=DarkMagenta
@@ -37,8 +49,8 @@ highlight ALEWarning ctermbg=DarkMagenta
 :endfunction
 
 :function DarkMode()
-    " colorscheme onehalfdark
-    colorscheme purify
+    colorscheme onedark
+    " colorscheme purify
     set background=dark
 :endfunction
 

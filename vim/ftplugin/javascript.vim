@@ -1,7 +1,3 @@
-let b:ale_linters = []
-let b:ale_fixers = []
-let b:ale_enabled=0
-
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 

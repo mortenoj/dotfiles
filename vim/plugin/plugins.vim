@@ -1,3 +1,24 @@
+
+""" =========================================================================
+""" ============================== TreeSitter ===============================
+""" =========================================================================
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
 """ =========================================================================
 """ ================================ CocVim =================================
 """ =========================================================================
@@ -11,9 +32,10 @@ let g:coc_global_extensions = [
     \ 'coc-emmet',
     \ 'coc-json',
     \ 'coc-snippets',
+    \ 'coc-ultisnips',
     \ 'coc-go',
     \ 'coc-clangd',
-    \ 'coc-jedi',
+    \ 'coc-pyright',
     \ 'coc-markdownlint',
     \ 'coc-omnisharp',
     \ 'coc-yaml',
@@ -21,9 +43,19 @@ let g:coc_global_extensions = [
     \ 'coc-xml',
     \ 'coc-pairs',
     \ 'coc-diagnostic',
-    \ 'coc-python',
     \ 'coc-vimtex',
+    \ 'coc-sh',
+    \ 'coc-kotlin',
+    \ 'coc-db',
+    \ 'coc-html',
+    \ 'coc-eslint',
 \ ]
+
+" auto import for Golang
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction)
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -67,7 +99,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR
 let g:NERDTreeShowHidden = 1
 let g:NERDTreeDirArrowExpandable = '↠'
 let g:NERDTreeDirArrowCollapsible = '↡'
-let g:NERDTreeIgnore = ['\.meta$', '^node_modules$']
+let g:NERDTreeIgnore = ['\.meta$', '^node_modules$', '^__pycache__$', '^__snapshots__$']
 
 " Open NERDTree on vim enter
 autocmd StdinReadPre * let s:std_in=1
@@ -77,32 +109,6 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 let NERDTreeQuitOnOpen = 1
-
-""" =========================================================================
-""" ================================== ALE ==================================
-""" =========================================================================
-let g:ale_pattern_options = {
-\   '*': {'ale_enabled': 0},
-\   '.*\.go$': {'ale_enabled': 1},
-\}
-
-let g:ale_fixers = { '*': ['remove_trailing_lines', 'trim_whitespace'] }
-
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-
-let g:ale_fix_on_save = 1
-
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 1
-let g:ale_open_list = 1
-let g:ale_keep_list_window_open = 1
-
-let g:ale_list_window_size = 5
-
-let g:airline#extensions#ale#enabled = 1
 
 """ =========================================================================
 """ ================================== CLAP =================================
@@ -117,6 +123,7 @@ let g:clap_theme = ''
 let g:clap_popup_input_delay = 0
 let g:clap_provider_grep_delay = 0
 let g:clap_provider_grep_opts = ''
+let g:clap_disable_run_rooter=v:true
 
 """ =========================================================================
 """ ============================ Neovim Terminal ============================
@@ -148,3 +155,25 @@ let g:vimtex_toc_config = {
     \ 'show_help': 0,
     \ 'tocdepth': 2,
     \ }
+
+
+
+""" =========================================================================
+""" ================================ DadBod =================================
+""" =========================================================================
+
+let g:db_ui_winwidth = 30
+
+
+""" =========================================================================
+""" ============================ nvim-colorizer =============================
+""" =========================================================================
+lua require'colorizer'.setup { '*'; css = { rgb_fn = true; }; html = { names = false; } }
+
+""" =========================================================================
+""" ================================ pounce =================================
+""" =========================================================================
+nmap s <cmd>Pounce<CR>
+nmap S <cmd>PounceRepeat<CR>
+vmap s <cmd>Pounce<CR>
+omap gs <cmd>Pounce<CR>  " 's' is used by vim-surround

@@ -30,3 +30,8 @@ alias mvi='mpv --config-dir=$HOME/.config/mvi'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+
+# Cool kids Unix tools (https://github.com/ibraheemdev/modern-unix)
+alias cat="bat"
+alias ls="exa"
+alias l="exa -lah"

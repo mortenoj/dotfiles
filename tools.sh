@@ -88,6 +88,8 @@ brew install z
 brew install tmux
 brew install zsh-autosuggestions
 brew install watch
+brew install gh
+gh alias set co --shell 'id="$(gh pr list -L100 | fzf | cut -f1)"; [ -n "$id" ] && gh pr checkout "$id"'
 
 # Install snazzy
 echo "Recommended install: Snazzy (https://github.com/sindresorhus/iterm2-snazzy)"
