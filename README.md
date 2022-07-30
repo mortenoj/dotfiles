@@ -1,11 +1,11 @@
 # dotfiles
 
-*Dotfiles and setup script*
+Dotfiles and setup script
 
-### Run
+## Run
 
-Run ``./install.sh`` to setup terminal, tools and neovim 
+Run `./install.sh` to setup terminal, tools and neovim.
 
-Run ``./macos-setup.sh`` to run settings for new mac
+Run `./macos-setup.sh` to run settings for new mac.
 
-If you are setting up a new mac run both 
+If you are setting up a new mac run both.
