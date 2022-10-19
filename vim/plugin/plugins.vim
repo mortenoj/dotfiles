@@ -1,23 +1,70 @@
-
 """ =========================================================================
 """ ============================== TreeSitter ===============================
 """ =========================================================================
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  -- A list of parser names, or "all"
+  ensure_installed = { },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  auto_install = true,
+
+  -- List of parsers to ignore installing (for "all")
+  ignore_install = { },
+
   highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- NOTE: these are the names of the parsers and not the filetype. (for example if you want to
+    -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
+    -- the name of the parser)
+    -- list of language that will be disabled
+    disable = {  },
+
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
     -- Using this option may slow down your editor, and you may see some duplicate highlights.
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
+
+    -- context aware commenting from 'nvim-ts-context-commentstring'
+    context_commentstring = {
+        enable = true
+    }
   },
 }
 EOF
+
+""" =========================================================================
+""" ============================= nvim-comment ==============================
+""" =========================================================================
+
+lua <<EOF
+require'nvim_comment'.setup {
+    -- Linters prefer comment and line to have a space in between markers
+    marker_padding = true,
+    -- should comment out empty or whitespace only lines
+    comment_empty = true,
+    -- trim empty comment whitespace
+    comment_empty_trim_whitespace = true,
+    -- Should key mappings be created
+    -- Keybindings are defined in Keybindings.vim
+    create_mappings = false,
+    -- Hook function to call before commenting takes place
+    hook = function()
+        -- make sure ts_context_commentstring is inserting context based on
+        -- cursor position
+        require("ts_context_commentstring.internal").update_commentstring()
+    end
+}
+EOF
+
+
 
 """ =========================================================================
 """ ================================ CocVim =================================
@@ -50,6 +97,8 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-eslint',
 \ ]
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " auto import for Golang
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

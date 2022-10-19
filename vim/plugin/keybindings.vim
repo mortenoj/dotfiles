@@ -1,3 +1,8 @@
+"
+" Key bindings
+" NB: comment keybind is defined in plugins.vim using nvim-comment
+""
+
 let mapleader=","
 
 nmap \ <leader>q
@@ -26,6 +31,10 @@ nmap <S-Tab> :bprevious<CR>
 
 map <leader><leader> :noh<cr>
 
+" Comment toggle
+nnoremap <leader>c<space> :CommentToggle<CR>
+vnoremap <leader>c<space> :CommentToggle<CR>
+
 " NERDTree
 nmap <leader>q :NERDTreeToggle<CR>
 
@@ -43,11 +52,6 @@ nmap <leader>ee :Clap colors<CR>
 nmap <leader>el :call LightMode()<CR>
 nmap <leader>ed :call DarkMode()<CR>
 
-" I find myself misstyping these all the time, norwegian keyboard shift to :
-cmap :W :w
-cmap Qa! qa!
-cmap Qa qa
-
 " Convenience move maps
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
@@ -55,6 +59,15 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-x> <C-w>x
 
+
+" Tabs
+map <leader>tn :tabnew<cr>
+map <leader>t<leader> :tabnext<cr>
+map <leader>tm :tabmove<cr>
+map <leader>tc :tabclose<cr>
+map <leader>to :tabonly<cr>
+
+" Move between wrapped lines
 nnoremap j gj
 nnoremap k gk
 
@@ -63,8 +76,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 vnoremap <ESC> <C-c>
-
-map <leader>c<space> <Plug>(caw:hatpos:toggle)
 
 " COC settings
 nnoremap <Leader>e <Plug>(coc-diagnostic-next)
@@ -109,5 +120,3 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}

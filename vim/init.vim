@@ -26,10 +26,6 @@ call plug#begin('~/.config/nvim/plugged')
 
     """============== Functional plugins ==============
 
-    " Follow symlinks
-    Plug 'moll/vim-bbye'
-    Plug 'aymericbeaumet/vim-symlink'
-
     " Inelisense for VIM
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -45,19 +41,24 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'neoclide/vim-easygit'
 
-    Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'TimUntersberger/neogit'
+    Plug 'sindrets/diffview.nvim'
 
     " Visualize indenting
     Plug 'Yggdroot/indentLine'
 
+    " Fuzzy file finding, global and local grepping etc...
     Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
     " For make in vim
     Plug 'tpope/vim-dispatch'
 
+    " SQL manager
     Plug 'tpope/vim-dadbod'
     Plug 'kristijanhusak/vim-dadbod-ui'
 
+    " Quick navigation
     Plug 'rlane/pounce.nvim'
 
     """============== Language plugins ==============
@@ -70,9 +71,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'pangloss/vim-javascript'
 
-    " Commenting based on context (JSX)
-    Plug 'tyru/caw.vim'
-    Plug 'Shougo/context_filetype.vim'
+    " Generatl commenting plugin
+    Plug 'terrortylor/nvim-comment'
+    " Commenting based on context (e.g. html, JSX)
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 
     " Latex support used by coc-vimtex
     Plug 'lervag/vimtex'
