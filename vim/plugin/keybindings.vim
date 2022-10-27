@@ -42,10 +42,10 @@ nmap <leader>q :NERDTreeToggle<CR>
 nmap <leader>f :Clap files<CR>
 nmap <leader>F :Clap blines<CR>
 nmap <leader>j :Clap jumps<CR>
-nmap <leader>g :Clap grep2<CR>
-nmap <leader>G :Clap grep2 +no-cache<CR>
-nmap <leader>d :Clap grep2 ++query=<cword><CR>
-vmap <leader>d :Clap grep2 ++query=@visual <CR>
+nmap <leader>g :Clap live_grep<CR>
+nmap <leader>G :Clap live_grep +no-cache<CR>
+nmap <leader>d :Clap live_grep ++query=<cword><CR>
+vmap <leader>d :Clap live_grep ++query=@visual <CR>
 nmap <leader>ee :Clap colors<CR>
 
 " Colors

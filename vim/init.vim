@@ -78,6 +78,9 @@ call plug#begin('~/.config/nvim/plugged')
 
     " Latex support used by coc-vimtex
     Plug 'lervag/vimtex'
+
+    """==================== Misc ===================
+    Plug 'seandewar/nvimesweeper'
 call plug#end()
 
 " manual install for golang-ci-lint server
