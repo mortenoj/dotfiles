@@ -49,7 +49,13 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'Yggdroot/indentLine'
 
     " Fuzzy file finding, global and local grepping etc...
-    Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+    " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
+
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+    " FZF sorting plugin for telescope
+    Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+    Plug 'nvim-telescope/telescope-github.nvim'
+    Plug 'xiyaowong/telescope-emoji.nvim'
 
     " For make in vim
     Plug 'tpope/vim-dispatch'

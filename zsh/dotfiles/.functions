@@ -7,7 +7,8 @@ function reload {
 
 # `ls` after `cd`
 function cd {
-  builtin cd "$@" && ls
+  builtin cd "$@"
+  ls -lah
 }
 
 # Runs arguments passed in new iterm tab
