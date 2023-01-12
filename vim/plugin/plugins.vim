@@ -1,4 +1,15 @@
 """ =========================================================================
+""" =============================== Telescope ===============================
+""" =========================================================================
+
+lua << EOF
+require('telescope').setup()
+require('telescope').load_extension('gh')
+require('telescope').load_extension('fzf')
+require("telescope").load_extension("emoji")
+EOF
+
+""" =========================================================================
 """ ============================== TreeSitter ===============================
 """ =========================================================================
 
@@ -158,20 +169,23 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 let NERDTreeQuitOnOpen = 1
 
+
 """ =========================================================================
 """ ================================== CLAP =================================
 """ =========================================================================
 
-let g:clap_layout = { 'relative': 'editor' }
+" customizations
 " let g:clap_theme = 'material_design_dark'
 " let g:clap_background_shadow_blend = 100
-let g:clap_enable_background_shadow = v:false
 
-let g:clap_theme = ''
-let g:clap_popup_input_delay = 0
-let g:clap_provider_grep_delay = 0
-let g:clap_provider_grep_opts = ''
-let g:clap_disable_run_rooter=v:true
+" let g:clap_layout = { 'relative': 'editor' }
+" let g:clap_enable_background_shadow = v:false
+"
+" let g:clap_theme = ''
+" let g:clap_popup_input_delay = 0
+" let g:clap_provider_grep_delay = 0
+" let g:clap_provider_grep_opts = ''
+" let g:clap_disable_run_rooter=v:true
 
 """ =========================================================================
 """ ============================ Neovim Terminal ============================

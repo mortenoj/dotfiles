@@ -3,6 +3,9 @@ filetype indent plugin on
 " Dark/Light mode
 set background=dark
 
+" Disable mouse features
+set mouse=
+
 set number
 
 set lazyredraw
