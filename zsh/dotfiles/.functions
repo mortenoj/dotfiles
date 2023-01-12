@@ -10,25 +10,6 @@ function cd {
   builtin cd "$@" && ls
 }
 
-function dev {
-    if [ -z $1 ]; then
-        if [ -z $DEFAULT_DEV_ENV ]; then
-            echo "usage: dev <environment>"
-            echo "Or export \$DEFAULT_DEV_ENV"
-            return
-        fi
-    fi
-    ENVIRONMENT=${1:-$DEFAULT_DEV_ENV}
-
-    file=$(find $DEV_ENVPATH -name "$ENVIRONMENT.sh")
-    if [ -z $file ]; then
-        echo "Environment shell file not found in path $DEV_ENVPATH/$ENVIRONMENT.sh"
-        return
-    fi
-    source $file
-    echo "Environemt $ENVIRONMENT Loaded"
-}
-
 # Runs arguments passed in new iterm tab
 function tab {
     local cmd=""

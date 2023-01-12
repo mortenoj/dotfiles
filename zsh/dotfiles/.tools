@@ -1,17 +1,5 @@
 #!/usr/bin/env bash
 
-# Source all main.sh files in scripts path
-for file in $(find $SCRIPTS_PATH -name "main.sh"); do
-    [ -f "$file" ] && source "$file"
-done
-
-# MO
-source $HOME/Code/work/maritimeoptima/terminal-utilities/include.sh
-
-# Syntax highlighting and autocomplete
-source $HOME/Tools/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # Z - rupa
 if command -v brew >/dev/null 2>&1; then
 	# Load rupa's z if installed
