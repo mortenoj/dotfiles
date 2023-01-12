@@ -23,6 +23,7 @@ brew cask install alfred
 # Browsers
 brew cask install google-chrome
 brew cask install firefox
+brew cask install brave-browser
 
 # Terminal
 brew cask install iterm2
