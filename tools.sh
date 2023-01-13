@@ -58,17 +58,15 @@ brew install postgis
 # ------- Terminal tools --------
 # -------------------------------
 
-# install and use homebrew's zsh instead of the default installed one
-brew install zsh
-sudo echo $(brew --prefix zsh) >> /etc/shells
-chsh -s  $(brew --prefix zsh)
-
 # fzf
 brew install fzf
 $(brew --prefix)/opt/fzf/install --all
 
+brew install ripgrep
+
 brew install ack
 brew install tmux
+brew install reattach-to-user-namespace
 brew install watch
 brew install gh
 brew install vifm

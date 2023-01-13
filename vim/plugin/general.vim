@@ -1,5 +1,7 @@
 filetype indent plugin on
 
+let &shell='/bin/zsh'
+
 " Dark/Light mode
 set background=dark
 
@@ -26,7 +28,7 @@ set incsearch ignorecase smartcase hlsearch
 set fillchars+=vert:\
 set wrap breakindent
 
-set encoding=utf-8
+set encoding=UTF-8
 set title
 
 set visualbell
@@ -41,8 +43,8 @@ set noswapfile
 " don't wrap mid-word
 set linebreak
 
-" set guifont=DroidSansMono\ Nerd\ Font:h11
-set guifont=MesloLGM\ Nerd\ Font\ Mono:h11
+" set guifont=MesloLGM\ Nerd\ Font\ Mono:h11
+set guifont=MesloLGM\ Nerd\ Font
 
 set clipboard+=unnamedplus
 
