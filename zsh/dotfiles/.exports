@@ -30,5 +30,5 @@ export GPG_TTY=$(tty)
 
 export MYVIMRC="${HOME}/.config/nvim/init.vim"
 
-# delta git - always use -R
 export DELTA_PAGER="less -R"
+export PAGER='delta'
