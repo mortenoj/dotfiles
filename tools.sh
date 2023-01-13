@@ -62,13 +62,14 @@ brew install postgis
 brew install fzf
 $(brew --prefix)/opt/fzf/install --all
 
-brew install ripgrep
-
-brew install ack
 brew install tmux
+brew install tmuxinator
+
+brew install ripgrep
+brew install ack
 brew install reattach-to-user-namespace
 brew install watch
-brew install gh
+
 brew install vifm
 brew install pure
 brew install ag
@@ -77,6 +78,8 @@ brew install exa # replacement for ls
 brew install bat # replacement for cat
 brew install git-delta # better `less`
 
+brew install gh
+gh alias set co --shell 'id="$(gh pr list -L100 | fzf | cut -f1)"; [ -n "$id" ] && gh pr checkout "$id"'
 
 # Install, and setup oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

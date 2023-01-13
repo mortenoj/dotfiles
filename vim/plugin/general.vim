@@ -43,8 +43,7 @@ set noswapfile
 " don't wrap mid-word
 set linebreak
 
-" set guifont=MesloLGM\ Nerd\ Font\ Mono:h11
-set guifont=MesloLGM\ Nerd\ Font
+set guifont=MesloLGM\ Nerd\ Font\ Mono:h11
 
 set clipboard+=unnamedplus
 

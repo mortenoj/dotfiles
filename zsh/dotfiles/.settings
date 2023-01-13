@@ -3,13 +3,20 @@
 ENABLE_CORRECTION="true"
 DISABLE_MAGIC_FUNCTIONS="true"
 
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 # Load pure promt
 autoload -Uz promptinit
 promptinit
 
-PURE_CMD_MAX_EXEC_TIME=10
+PURE_CMD_MAX_EXEC_TIME=20
 
 # Pure prompt colors
 zstyle :prompt:pure:path color blue
