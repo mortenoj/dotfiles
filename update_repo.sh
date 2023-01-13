@@ -4,6 +4,11 @@ rm -rf zsh/*
 cp -r ~/.dotfiles zsh/dotfiles
 cp ~/.zshrc zsh/.zshrc
 
+cp ~/.tmux.conf.local ./tmux/
+cp ~/.config/alacritty/alacritty.yml ./
+
+cp -r ~/.config/tmuxinator ./tmux/tmuxinator-configs
+
 
 # Update vim
 declare -a configs=(

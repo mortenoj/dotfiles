@@ -1,0 +1,29 @@
+# /Users/morten/.config/tmuxinator/default-session.yml
+name: default-session
+
+# Root dir
+root: ~/
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+attach: true
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - editor:
+          - vim
+        - pane1:
+          - ls
+        - pane2:
+          - git status
+  - terminal:
+      panes:
+        - terminal:
+          - clear

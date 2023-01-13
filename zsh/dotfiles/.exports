@@ -4,37 +4,13 @@
 export PURE_PROMPT_SYMBOL='⚡️'
 export EDITOR="nvim"
 
-# Path to custom scripts
-export SCRIPTS_PATH="$HOME/Tools/scripts"
-
-# ssh
-export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# Java
-export PATH="$HOME/.jenv/bin:$PATH"
-# eval "$(jenv init -)"
-# https://stackoverflow.com/questions/52524112/how-do-i-install-java-on-mac-osx-allowing-version-switching
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-
 # VIFM
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
+#export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Android
-export ANDROID_SDK=$HOME/Library/Android/sdk
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH="$PATH:$ANDROID_SDK/emulator"
-export PATH="$PATH:$ANDROID_SDK/tools"
-export PATH="$PATH:$ANDROID_SDK/platform-tools"
-export LD_LIBRARY_PATH=$ANDROID_SDK/tools/lib:$LD_LIBRARY_PATH
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-
+#export PATH="$HOME/.cargo/bin:$PATH"
 
 # Golang
 export GOPATH="${HOME}/.go"
@@ -42,17 +18,17 @@ export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # MO
-export DEV_ENVPATH="${HOME}/Code/work/maritimeoptima"
-export DEFAULT_DEV_ENV=maritimeoptima
-export MO_USER=morten
+# export DEV_ENVPATH="${HOME}/Code/work/maritimeoptima"
+# export DEFAULT_DEV_ENV=maritimeoptima
+# export MO_USER=morten
 
 # GPG
 export GPG_TTY=$(tty)
 
 # C# Mono path
-export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
+# export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 
 export MYVIMRC="${HOME}/.config/nvim/init.vim"
 
-# delta git - always use -R
-export DELTA_PAGER="less -R"
+export DELTA_PAGER='less -R'
+export GIT_PAGER='delta'

@@ -10,13 +10,13 @@ DISABLE_MAGIC_FUNCTIONS="true"
 #   export EDITOR='nvim'
 # fi
 
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+
 # Load pure promt
-autoload -Uz compinit
-compinit
+autoload -Uz promptinit
+promptinit
 
-autoload -U promptinit; promptinit
-
-PURE_CMD_MAX_EXEC_TIME=10
+PURE_CMD_MAX_EXEC_TIME=20
 
 # Pure prompt colors
 zstyle :prompt:pure:path color blue

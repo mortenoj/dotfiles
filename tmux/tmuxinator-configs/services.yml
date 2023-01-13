@@ -1,0 +1,27 @@
+# /Users/morten/.config/tmuxinator/services.yml
+name: services
+
+# Root dir
+root: ~/Code/work/maritimeoptima/services
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+startup_pane: vim
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+attach: true
+
+windows:
+  - editor:
+      layout: 8a10,317x77,0,0{234x77,0,0,0,82x77,235,0[82x38,235,0,2,82x38,235,39,4]}
+      panes:
+        - vim:
+          - vim
+        - git:
+          - clear
+          - git status
+  - terminal:
+      panes:
+        - clear
