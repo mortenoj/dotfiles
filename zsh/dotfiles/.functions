@@ -77,3 +77,12 @@ function deleteSystemLogs {
 function psgrep {
     ps -ef | egrep "$1"
 }
+
+function kube-conf {
+    RESOURCE=$1
+    if [ -z "$1" ]; then
+        echo "Expected 1 argument: cluster name"
+    else
+        az aks get-credentials --name ${RESOURCE}-aks --resource-group ${RESOURCE}-resources
+    fi
+}

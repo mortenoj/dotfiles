@@ -69,6 +69,7 @@ brew install ripgrep
 brew install ack
 brew install reattach-to-user-namespace
 brew install watch
+brew install az
 
 brew install vifm
 brew install pure
