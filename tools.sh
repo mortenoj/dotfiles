@@ -28,6 +28,7 @@ brew install --cask alacritty
 
 # Development
 brew install --cask tableplus
+brew install --cask altair-graphql-client
 brew install --cask visual-studio-code
 
 # -------------------------------
@@ -38,9 +39,15 @@ brew install kubectl
 brew install kubectx
 brew install jq
 brew install cmake
+brew install gpg2
+brew install gnupg
+brew install pinentry-mac       
+brew install scrcpy
+brew install md5sha1sum
 
 # Golang
 brew install go
+brew install golangci-lint
 
 # Node
 brew install node
@@ -53,6 +60,15 @@ npm install -g n  # interactive node version manager
 brew install postgres@14
 createdb $USER
 brew install postgis
+
+# idb
+brew tap facebook/fb
+brew install idb-companion
+pip3 install fb-idb
+
+brew install ios-deploy
+
+
 
 # -------------------------------
 # ------- Terminal tools --------
