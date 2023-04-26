@@ -1,3 +1,13 @@
+
+""" =========================================================================
+""" =============================== Autopairs ===============================
+""" =========================================================================
+lua << EOF
+require("nvim-autopairs").setup {
+    disable_filetype = { },
+}
+EOF
+
 """ =========================================================================
 """ =============================== Telescope ===============================
 """ =========================================================================
@@ -35,7 +45,7 @@ require'nvim-treesitter.configs'.setup {
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = {  },
+    disable = { 'json' },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -171,23 +181,6 @@ let NERDTreeQuitOnOpen = 1
 
 
 """ =========================================================================
-""" ================================== CLAP =================================
-""" =========================================================================
-
-" customizations
-" let g:clap_theme = 'material_design_dark'
-" let g:clap_background_shadow_blend = 100
-
-" let g:clap_layout = { 'relative': 'editor' }
-" let g:clap_enable_background_shadow = v:false
-"
-" let g:clap_theme = ''
-" let g:clap_popup_input_delay = 0
-" let g:clap_provider_grep_delay = 0
-" let g:clap_provider_grep_opts = ''
-" let g:clap_disable_run_rooter=v:true
-
-""" =========================================================================
 """ ============================ Neovim Terminal ============================
 """ =========================================================================
 tmap <Esc> <C-\><C-n>
@@ -201,23 +194,6 @@ autocmd BufLeave term://* stopinsert
 """ ================================ EasyGit ================================
 """ =========================================================================
 let g:easygit_enable_command = 0
-
-
-""" =========================================================================
-""" ================================ VimTex =================================
-""" =========================================================================
-let g:vimtex_view_general_viewer = 'skim'
-let g:vimtex_view_skim_activate = 1
-
-" TOC settings
-let g:vimtex_toc_config = {
-    \ 'name': 'Table of contents (vimtex)',
-    \ 'mode': 2,
-    \ 'split_width': 50,
-    \ 'show_help': 0,
-    \ 'tocdepth': 2,
-    \ }
-
 
 
 """ =========================================================================

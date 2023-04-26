@@ -10,6 +10,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'kyoz/purify', { 'rtp': 'vim' }
 
+    Plug 'windwp/nvim-autopairs'
 
     """ Airline
     Plug 'vim-airline/vim-airline'
@@ -81,9 +82,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'terrortylor/nvim-comment'
     " Commenting based on context (e.g. html, JSX)
     Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-
-    " Latex support used by coc-vimtex
-    Plug 'lervag/vimtex'
 
     """==================== Misc ===================
     Plug 'seandewar/nvimesweeper'

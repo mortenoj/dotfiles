@@ -7,6 +7,13 @@ export EDITOR="nvim"
 # VIFM
 export PATH="$HOME/.config/vifm/scripts:$PATH"
 
+# custom installed tools
+export PATH="$HOME/Code/tools/:$PATH"
+
+# java
+export PATH="$(brew --prefix)/opt/openjdk@11/bin:$PATH"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+
 #export PATH="/usr/local/opt/ruby/bin:$PATH"
 
 # Rust
@@ -32,3 +39,4 @@ export MYVIMRC="${HOME}/.config/nvim/init.vim"
 
 export DELTA_PAGER='less -R'
 export GIT_PAGER='delta'
+

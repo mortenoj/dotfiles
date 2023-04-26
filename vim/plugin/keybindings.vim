@@ -26,9 +26,6 @@ nmap <leader>r :call ReloadVimrc()<CR>
 nmap <leader>s <C-w>s<C-w>j:terminal<CR>
 nmap <leader>vs <C-w>v<C-w>l:terminal<CR>
 
-nmap <Tab> :bnext<CR>
-nmap <S-Tab> :bprevious<CR>
-
 map <leader><leader> :noh<cr>
 
 " Comment toggle
@@ -70,12 +67,15 @@ nmap <C-k> <C-w>k
 nmap <C-x> <C-w>x
 
 
-" Tabs
+" Tabs and buffers
 map <leader>tn :tabnew<cr>
 map <leader>t<leader> :tabnext<cr>
 map <leader>tm :tabmove<cr>
 map <leader>tc :tabclose<cr>
 map <leader>to :tabonly<cr>
+
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprevious<CR>
 
 " Move between wrapped lines
 nnoremap j gj

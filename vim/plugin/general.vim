@@ -1,5 +1,8 @@
 filetype indent plugin on
 
+" Disable quote concealing in JSON files
+let g:vim_json_conceal=0
+
 let &shell='/bin/zsh'
 
 " Dark/Light mode
