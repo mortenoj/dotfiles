@@ -11,6 +11,8 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # fi
 
 fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# To use fzf in Vim
+set rtp+="$(brew --prefix)/opt/fzf"
 
 # Load pure promt
 autoload -Uz promptinit
