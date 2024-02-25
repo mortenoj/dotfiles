@@ -41,7 +41,7 @@
       "filetypes": ["graphql"]
     }
   },
-  "coc.preferences.rootPatterns": [
+  "workspace.rootPatterns": [
     ".python-root",
     "go.mod",
     ".git",
@@ -49,22 +49,24 @@
     ".projections.json"
   ],
   "python.pythonPath": "python",
-  "coc.preferences.formatOnSaveFiletypes": [
-    "python",
-    "css",
-    "markdown",
-    "Markdown",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "go",
-    "json",
-    "jsonc",
-    "graphql"
-  ],
+  "coc.preferences.formatOnSave": true,
+  // "coc.preferences.formatOnSaveFiletypes": [
+  //   "python",
+  //   "css",
+  //   "markdown",
+  //   "Markdown",
+  //   "javascript",
+  //   "javascriptreact",
+  //   "typescript",
+  //   "typescriptreact",
+  //   "go",
+  //   "json",
+  //   "jsonc",
+  //   "graphql"
+  // ],
   "yank.highlight.enable": true,
   "yank.highlight.duration": 400,
   "suggest.noselect": true,
-  "diagnostic.checkCurrentLine": true
+  "diagnostic.checkCurrentLine": true,
+  "tsserver.useLocalTsdk": true
 }

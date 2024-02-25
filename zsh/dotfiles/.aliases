@@ -32,6 +32,6 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 
 # Cool kids Unix tools (https://github.com/ibraheemdev/modern-unix)
-alias cat="bat"
-alias ls="exa"
-alias l="exa -lah"
+alias cat="bat --theme OneHalfDark"
+alias ls="eza"
+alias l="eza -lah"

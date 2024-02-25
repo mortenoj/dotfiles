@@ -1,0 +1,8 @@
+name: notes
+root: ~/Notes/work/2024
+startup_window: editor
+windows:
+  - editor:
+      panes:
+        - vim:
+            - vim

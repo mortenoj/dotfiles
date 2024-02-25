@@ -434,13 +434,14 @@ tmux_conf_uninstall_plugins_on_reload=true
 # visit https://github.com/tmux-plugins for available plugins
 
 set -g @plugin 'odedlaz/tmux-onedark-theme'
+set -g @plugin 'feqzz/tmux-spotify-info'
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-cpu'
 #set -g @plugin 'tmux-plugins/tmux-resurrect'
 #set -g @plugin 'tmux-plugins/tmux-continuum'
 #set -g @continuum-restore 'on'
 
-set -g @onedark_widgets "#(tmux-spotify-info)"
+set -g @onedark_widgets "#{spotify_info}"
 
 # -- custom variables ----------------------------------------------------------
 

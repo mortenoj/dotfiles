@@ -1,0 +1,33 @@
+# /Users/morten/.config/tmuxinator/mobile.yml
+name: ShipIntel Mobile
+
+# Root dir
+root: ~/Code/work/maritimeoptima/apps/apps/shipintel-mobile
+
+# Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
+startup_window: editor
+
+# Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
+startup_pane: 1
+
+# Controls whether the tmux session should be attached to automatically. Defaults to true.
+attach: true
+
+windows:
+  - editor:
+      # layout: e790,293x69,0,0{222x69,0,0,0,70x69,223,0[70x23,223,0,2,70x21,223,24,3,70x23,223,46,4]}
+      layout: 8a10,317x77,0,0{234x77,0,0,0,82x77,235,0[82x38,235,0,2,82x38,235,39,4]}
+      panes:
+        - editor:
+            - vim
+        - git:
+            - clear
+            - git status
+  - terminal:
+      panes:
+        - terminal:
+            - clear
+            - yarn start debug
+        - scrcpy:
+            - clear
+            - scrcpy

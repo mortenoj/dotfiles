@@ -52,7 +52,7 @@ call plug#begin('~/.config/nvim/plugged')
     " Fuzzy file finding, global and local grepping etc...
     " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
 
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
     " FZF sorting plugin for telescope
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'nvim-telescope/telescope-github.nvim'
