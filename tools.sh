@@ -41,6 +41,7 @@ brew install jq
 brew install cmake
 brew install gpg2
 brew install gnupg
+brew install gnu-sed
 brew install pinentry-mac       
 brew install scrcpy
 brew install md5sha1sum

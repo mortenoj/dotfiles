@@ -50,6 +50,7 @@
   ],
   "python.pythonPath": "python",
   "coc.preferences.formatOnSave": true,
+  "emmet.excludeLanguages": ["markdown", "typescriptreact", "typescript"],
   // "coc.preferences.formatOnSaveFiletypes": [
   //   "python",
   //   "css",

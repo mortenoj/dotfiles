@@ -1,5 +1,67 @@
 
 """ =========================================================================
+""" ============================ treesitter =================================
+""" =========================================================================
+
+lua << EOF
+require'treesitter-context'.setup{
+  max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+  min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+  line_numbers = true,
+  multiline_threshold = 20, -- Maximum number of lines to show for a single context
+  trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+  mode = 'cursor',  -- Line used to calculate context. Choices: 'cursor', 'topline'
+  -- Separator between context and content. Should be a single character string, like '-'.
+  -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+  separator = nil,
+  zindex = 20, -- The Z-index of the context window
+  on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+}
+EOF
+
+""" =========================================================================
+""" ========================= gitsigns ==============================
+""" =========================================================================
+lua << EOF
+require('gitsigns').setup {
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+    current_line_blame_opts = {
+        virt_text_pos = 'right_align', -- 'eol' | 'overlay' | 'right_align'
+        delay = 650,
+      },
+    }
+EOF
+
+""" =========================================================================
+""" ========================= indent-blankline ==============================
+""" =========================================================================
+lua << EOF
+require("ibl").setup {
+    indent = { char = "┆" },
+    scope = { enabled = true },
+}
+EOF
+
+""" =========================================================================
+""" ================================ Spectre ================================
+""" =========================================================================
+lua << EOF
+vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+    desc = "Toggle Spectre"
+})
+vim.keymap.set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+    desc = "Search current word"
+})
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
+
+EOF
+
+""" =========================================================================
 """ =============================== Autopairs ===============================
 """ =========================================================================
 lua << EOF
@@ -11,22 +73,19 @@ EOF
 """ =========================================================================
 """ =============================== Telescope ===============================
 """ =========================================================================
-
 lua << EOF
 require('telescope').setup()
 require('telescope').load_extension('gh')
 require('telescope').load_extension('fzf')
-require("telescope").load_extension("emoji")
 EOF
 
 """ =========================================================================
 """ ============================== TreeSitter ===============================
 """ =========================================================================
-
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { },
+  ensure_installed = { 'lua' },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -45,7 +104,7 @@ require'nvim-treesitter.configs'.setup {
     -- disable highlighting for the `tex` filetype, you need to include `latex` in this list as this is
     -- the name of the parser)
     -- list of language that will be disabled
-    disable = { 'json', 'lua', 'vim' },
+    disable = { 'json' },
 
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
@@ -64,7 +123,6 @@ EOF
 """ =========================================================================
 """ ============================= nvim-comment ==============================
 """ =========================================================================
-
 lua <<EOF
 require'nvim_comment'.setup {
     -- Linters prefer comment and line to have a space in between markers
@@ -84,7 +142,6 @@ require'nvim_comment'.setup {
     end
 }
 EOF
-
 
 """ =========================================================================
 """ ================================ CocVim =================================
@@ -114,7 +171,6 @@ let g:coc_global_extensions = [
     \ 'coc-sh',
     \ 'coc-kotlin',
     \ 'coc-db',
-    \ 'coc-html',
     \ 'coc-eslint',
 \ ]
 
@@ -206,7 +262,14 @@ let g:db_ui_winwidth = 30
 """ =========================================================================
 """ ============================ nvim-colorizer =============================
 """ =========================================================================
-lua require'colorizer'.setup { '*'; css = { rgb_fn = true; }; html = { names = false; } }
+lua << EOF
+require 'colorizer'.setup {
+  '*'; -- Highlight all files, but customize some others.
+  css = { rgb_fn = true; }; -- Enable parsing rgb(...) functions in css.
+  html = { names = false; } -- Disable parsing "names" like Blue or Gray
+}
+EOF
+
 
 """ =========================================================================
 """ ================================ pounce =================================

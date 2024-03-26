@@ -23,7 +23,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'norcalli/nvim-colorizer.lua'
 
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+    Plug 'nvim-treesitter/nvim-treesitter-context'
 
     """============== Functional plugins ==============
 
@@ -46,17 +46,22 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'TimUntersberger/neogit'
     Plug 'sindrets/diffview.nvim'
 
+    Plug 'ewis6991/gitsigns.nvim'
+
+    " Search and replace tool
+    Plug 'nvim-pack/nvim-spectre'
+
+
+    Plug 'tpope/vim-repeat'
+
     " Visualize indenting
-    Plug 'Yggdroot/indentLine'
+    Plug 'lukas-reineke/indent-blankline.nvim'
 
-    " Fuzzy file finding, global and local grepping etc...
-    " Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary' }
-
-    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.5' }
+    Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.x' }
     " FZF sorting plugin for telescope
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'nvim-telescope/telescope-github.nvim'
-    Plug 'xiyaowong/telescope-emoji.nvim'
+    Plug 'nvim-telescope/telescope-symbols.nvim'
 
     " For make in vim
     Plug 'tpope/vim-dispatch'

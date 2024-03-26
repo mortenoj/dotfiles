@@ -1,5 +1,5 @@
 # /Users/morten/.config/tmuxinator/web.yml
-name: web
+name: ShipAtlas Web
 
 # Root dir
 root: ~/Code/work/maritimeoptima/apps/apps/shipatlas-web

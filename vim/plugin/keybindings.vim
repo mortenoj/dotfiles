@@ -36,6 +36,7 @@ vnoremap <leader>c<space> :CommentToggle<CR>
 nmap <leader>q :NERDTreeToggle<CR>
 
 " Telescope
+nnoremap <leader>t <cmd>Telescope<cr>
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>d <cmd>Telescope grep_string<cr>
@@ -44,16 +45,6 @@ nnoremap <leader>h <cmd>Telescope help_tags<cr>
 nnoremap <leader>ee <cmd>Telescope colorscheme<cr>
 " github plugin
 nnoremap <leader>pr <cmd>Telescope gh pull_request<cr>
-
-" Clap
-" nmap <leader>f :Clap files<CR>
-" nmap <leader>F :Clap blines<CR>
-" nmap <leader>j :Clap jumps<CR>
-" nmap <leader>g :Clap live_grep<CR>
-" nmap <leader>G :Clap live_grep +no-cache<CR>
-" nmap <leader>d :Clap live_grep ++query=<cword><CR>
-" vmap <leader>d :Clap live_grep ++query=@visual <CR>
-" nmap <leader>ee :Clap colors<CR>
 
 " Colors
 nmap <leader>el :call LightMode()<CR>
