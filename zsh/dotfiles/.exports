@@ -10,6 +10,10 @@ export PATH="$HOME/.config/vifm/scripts:$PATH"
 # custom installed tools
 export PATH="$HOME/Code/tools/:$PATH"
 
+# Use gnu-sed instead of mac-specific sed for better compatibility with tools
+# written for linux such as 'nvim-spectre'
+export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+
 # java
 export PATH="$(brew --prefix)/opt/openjdk@17/bin:$PATH"
 
@@ -41,3 +45,7 @@ export MYVIMRC="${HOME}/.config/nvim/init.vim"
 export DELTA_PAGER='less -R'
 export GIT_PAGER='delta'
 
+# tmux 3.5 fix
+# export TMUX_PROGRAM="$(brew --prefix)/bin/tmux"
+# export TMUX_CONF="$HOME/.tmux.conf"
+# export TMUX_CONF_LOCAL="$HOME/.tmux.conf.local"

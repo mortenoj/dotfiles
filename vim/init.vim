@@ -10,6 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'sonph/onehalf', {'rtp': 'vim/'}
     Plug 'kyoz/purify', { 'rtp': 'vim' }
 
+    Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+
     Plug 'windwp/nvim-autopairs'
 
     """ Airline
@@ -17,6 +19,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-airline/vim-airline-themes'
 
     """ Icons
+
     Plug 'ryanoasis/vim-devicons'
 
     """ Color color values in files
@@ -26,6 +29,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-treesitter/nvim-treesitter-context'
 
     """============== Functional plugins ==============
+
+    " Markdown preview
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
     " Inelisense for VIM
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -45,8 +51,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'TimUntersberger/neogit'
     Plug 'sindrets/diffview.nvim'
+    " for diffview: vim-devicons with colors
+    Plug 'nvim-tree/nvim-web-devicons'
 
-    Plug 'ewis6991/gitsigns.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
 
     " Search and replace tool
     Plug 'nvim-pack/nvim-spectre'
@@ -62,6 +70,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
     Plug 'nvim-telescope/telescope-github.nvim'
     Plug 'nvim-telescope/telescope-symbols.nvim'
+
+    " Literaly just for :Bdelete hidden
+    " TODO: replace with Telescope keybindings
+    Plug 'Asheq/close-buffers.vim'
 
     " For make in vim
     Plug 'tpope/vim-dispatch'

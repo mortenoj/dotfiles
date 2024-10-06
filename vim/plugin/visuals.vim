@@ -34,22 +34,18 @@ let g:airline_section_warning = ''
 
 set background=dark
 
-" colorscheme purify
-colorscheme onedark
+colorscheme catppuccin-frappe
 
-let g:airline_theme='onehalfdark'
+let g:airline_theme='onedark'
 let g:onedark_terminal_italics=1
 
-" ALE
-highlight ALEWarning ctermbg=DarkMagenta
-
 :function LightMode()
-    colorscheme onehalflight
+    colorscheme catppuccin-latte
     set background=light
 :endfunction
 
 :function DarkMode()
-    colorscheme onedark
+    colorscheme catppuccin-frappe
     " colorscheme purify
     set background=dark
 :endfunction

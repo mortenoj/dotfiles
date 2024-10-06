@@ -26,4 +26,4 @@ windows:
       panes:
         - runner:
             - clear
-            - yarn start debug
+            - yarn start debug --port 5174

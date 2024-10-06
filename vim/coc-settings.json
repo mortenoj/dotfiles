@@ -2,19 +2,27 @@
   "eslint.autoFixOnSave": true,
   "languageserver": {
     /* manual install for golangci-lint                    */
-    /* go get github.com/nametake/golangci-lint-langserver */
+    /* go install github.com/nametake/golangci-lint-langserver */
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",
       "filetypes": ["go"],
       "initializationOptions": {
+        // "command": [
+        //   "golangci-lint",
+        //   "run",
+        //   "--enable-all",
+        //   "--disable",
+        //   "lll",
+        //   "--out-format",
+        //   "json",
+        //   "--issues-exit-code=1"
+        // ]
         "command": [
           "golangci-lint",
           "run",
-          "--enable-all",
-          "--disable=lll",
-          "--disable=gomnd",
-          "--disable=wrapcheck",
-          "--out-format=json"
+          "--out-format",
+          "json",
+          "--issues-exit-code=1"
         ]
       }
     },
