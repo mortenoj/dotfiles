@@ -4,10 +4,10 @@ rm -rf zsh/*
 cp -r ~/.dotfiles zsh/dotfiles
 cp ~/.zshrc zsh/.zshrc
 
-cp ~/.tmux.conf.local ./tmux/
+cp ~/.tmux.conf ./tmux/
 cp ~/.config/alacritty/alacritty.toml ./
 
-cp -r ~/.config/tmuxinator ./tmux/tmuxinator-configs
+cp -r ~/.config/tmuxinator/tmuxinator-configs ./tmuxinator/
 
 
 # Update vim
