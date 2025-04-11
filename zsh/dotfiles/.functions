@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# using head of tmux to fix issue with extended keys not working properly
+# so need to suppress tmux version warning from tmuxinator
+function t {
+    tmuxinator start $1 --suppress-tmux-version-warning
+}
+
+function vimdiff {
+    nvim --cmd "let g:nerdtree_disable_on_startup = 1" -c "CocDisable" -c "DiffviewOpen $*"
+}
+
+
 # Sources .zshrc
 function reload {
 	source ~/.zshrc

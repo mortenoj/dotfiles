@@ -6,13 +6,14 @@ cp ~/.zshrc zsh/.zshrc
 
 cp ~/.tmux.conf ./tmux/
 cp ~/.config/alacritty/alacritty.toml ./
+cp -r ~/.config/ghostty ./ghostty
 
 cp -r ~/.config/tmuxinator/tmuxinator-configs ./tmuxinator/
 
 
 # Update vim
 declare -a configs=(
-    "init.vim"
+    "init.lua"
     "ftplugin"
     "plugin"
     "coc-settings.json"

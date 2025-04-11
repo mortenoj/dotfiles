@@ -21,7 +21,7 @@ alias psqlStop="brew services stop postgresql"
 alias unstage="git clean -df && git checkout -- ."
 
 # Tmuxinator
-alias t="tmuxinator"
+# alias t="tmuxinator"
 
 alias mvi='mpv --config-dir=$HOME/.config/mvi'
 

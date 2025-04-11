@@ -1,9 +1,10 @@
+[general]
 import = [
 # "~/.config/alacritty/colorschemes/default.toml"
-"~/.config/alacritty/colorschemes/catppuccin-frappe.toml"
+# "~/.config/alacritty/colorschemes/catppuccin-frappe.toml"
 # "~/.config/alacritty/colorschemes/catppuccin-latte.toml"
 # "~/.config/alacritty/colorschemes/catppuccin-macchiato.toml"
-# "~/.config/alacritty/colorschemes/catppuccin-mocha.toml"
+"~/.config/alacritty/colorschemes/catppuccin-mocha.toml"
 ]
 
 [env]
@@ -40,3 +41,15 @@ y = 8
 [window.position]
 x = 0
 y = 0
+
+
+# [[keyboard.bindings]]
+# key = "Return"
+# mods = "Control"
+# chars = "\u001b[13;5u"
+
+[keyboard]
+bindings = [
+    # fix for ctrl-enter not working in vim while in tmux
+    { key = "Return", mods = "Control", chars = "\u001b[13;5u" },
+]

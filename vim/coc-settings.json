@@ -1,5 +1,7 @@
 {
   "eslint.autoFixOnSave": true,
+  "eslint.experimental.useFlatConfig": true,
+  "eslint.workingDirectories": [{ "mode": "auto" }],
   "languageserver": {
     /* manual install for golangci-lint                    */
     /* go install github.com/nametake/golangci-lint-langserver */
@@ -46,6 +48,7 @@
       "command": "graphql-lsp",
       "args": ["server", "-m", "stream"],
       // customize filetypes to your needs
+      // "filetypes": ["typescript", "typescriptreact", "graphql"]
       "filetypes": ["graphql"]
     }
   },
@@ -59,20 +62,6 @@
   "python.pythonPath": "python",
   "coc.preferences.formatOnSave": true,
   "emmet.excludeLanguages": ["markdown", "typescriptreact", "typescript"],
-  // "coc.preferences.formatOnSaveFiletypes": [
-  //   "python",
-  //   "css",
-  //   "markdown",
-  //   "Markdown",
-  //   "javascript",
-  //   "javascriptreact",
-  //   "typescript",
-  //   "typescriptreact",
-  //   "go",
-  //   "json",
-  //   "jsonc",
-  //   "graphql"
-  // ],
   "yank.highlight.enable": true,
   "yank.highlight.duration": 400,
   "suggest.noselect": true,

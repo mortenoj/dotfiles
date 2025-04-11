@@ -40,7 +40,7 @@ export GPG_TTY=$(tty)
 # C# Mono path
 # export PATH=/Library/Frameworks/Mono.framework/Versions/Current/bin/:${PATH}
 
-export MYVIMRC="${HOME}/.config/nvim/init.vim"
+export MYVIMRC="${HOME}/.config/nvim/init.lua"
 
 export DELTA_PAGER='less -R'
 export GIT_PAGER='delta'
