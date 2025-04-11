@@ -69,6 +69,7 @@ pip3 install fb-idb
 
 brew install ios-deploy
 
+brew install luarocks
 
 
 # -------------------------------

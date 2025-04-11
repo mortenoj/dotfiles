@@ -15,8 +15,9 @@ cp -r ~/.config/tmuxinator/tmuxinator-configs ./tmuxinator/
 declare -a configs=(
     "init.lua"
     "ftplugin"
-    "plugin"
+    "lua"
     "coc-settings.json"
+    ".ignore"
 )
 
 for file in "${configs[@]}"; do
