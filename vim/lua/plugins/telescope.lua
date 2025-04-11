@@ -2,7 +2,10 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope-ui-select.nvim",
+    },
     config = function()
       local telescope = require("telescope")
 
@@ -24,11 +27,14 @@ return {
             push_cursor_on_edit = true, -- Jump back to saved cursor position
             timeout = 5000, -- Timeout for coc commands (adjust as needed)
           },
+         ["ui-select"] = {
+            require("telescope.themes").get_dropdown({}) -- Use dropdown theme for ui-select
+          },
         },
       })
 
       -- Load Telescope extensions
-      local extensions = { "gh", "fzf", "coc" }
+      local extensions = { "gh", "fzf", "coc", "ui-select" }
       for _, ext in ipairs(extensions) do
         pcall(telescope.load_extension, ext)
       end

@@ -14,6 +14,8 @@ export PATH="$HOME/Code/tools/:$PATH"
 # written for linux such as 'nvim-spectre'
 export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
 
+export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
+
 # java
 export PATH="$(brew --prefix)/opt/openjdk@17/bin:$PATH"
 

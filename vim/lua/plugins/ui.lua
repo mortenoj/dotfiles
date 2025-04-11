@@ -93,6 +93,9 @@ return {
         command_palette = false,
         long_message_to_split = true,
       },
+      messages = {
+        view_search = false,
+      },
 
       -- Default config that can be used if I use native LSP + neotree and a sort
       -- out a few other plugins
