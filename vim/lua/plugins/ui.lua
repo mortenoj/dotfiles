@@ -7,6 +7,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
+      require("catppuccin").setup({})
       vim.cmd("colorscheme catppuccin-mocha")
     end
   },
@@ -17,6 +18,7 @@ return {
     config = function()
       require("lualine").setup({
         options = {
+          globalstatus = true, -- Enables a global status line
           theme = "nightfly",
         },
       })
@@ -50,23 +52,6 @@ return {
   {
     "folke/noice.nvim",
     opts = {
-      -- Only enable cmdline
-      -- cmdline = {
-      --   enabled = true,
-      --   view = "cmdline_popup",
-      -- },
-      --
-      -- messages = { enabled = false },
-      -- popupmenu = { enabled = false },
-      -- notify = { enabled = false },
-      -- presets = {
-      --   bottom_search = false,
-      --   command_palette = false,
-      --   long_message_to_split = false,
-      --   inc_rename = false,
-      --   lsp_doc_border = false,
-      -- },
-
       -- Config that lazyvim uses
       lsp = {
         override = {
@@ -87,6 +72,20 @@ return {
           },
           view = "mini",
         },
+        {
+          opts = { skip = true },
+          filter = {
+            event = "msg_show",
+            kind = "",
+            any = {
+              { find = "fewer lines" },
+              { find = "more lines" },
+              { find = "lines <ed" },
+              { find = "lines >ed" },
+              { fine = "Toggling hidden files" },
+            }
+          },
+        },
       },
       presets = {
         bottom_search = true,
@@ -96,36 +95,6 @@ return {
       messages = {
         view_search = false,
       },
-
-      -- Default config that can be used if I use native LSP + neotree and a sort
-      -- out a few other plugins
-      -- lsp = {
-      --   enabled = true,
-      --   -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-      --   override = {
-      --     ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-      --     ["vim.lsp.util.stylize_markdown"] = true,
-      --     ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-      --   },
-      -- },
-      -- messages = {
-        -- NOTE: If you enable messages, then the cmdline is enabled automatically.
-        -- This is a current Neovim limitation.
-        -- enabled = true, -- enables the Noice messages UI
-        -- view = "notify", -- default view for messages
-        -- view_error = "notify", -- view for errors
-        -- view_warn = "notify", -- view for warnings
-        -- view_history = "messages", -- view for :messages
-        -- view_search = false, -- ("virtualtext") view for search count messages. Set to `false` to disable
-      -- },
-      -- you can enable a preset for easier configuration
-      -- presets = {
-        -- bottom_search = true, -- use a classic bottom cmdline for search
-        -- command_palette = true, -- position the cmdline and popupmenu together
-        -- long_message_to_split = true, -- long messages will be sent to a split
-        -- inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        -- lsp_doc_border = false, -- add a border to hover docs and signature help
-      -- },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",

@@ -16,7 +16,6 @@ declare -a configs=(
     "init.lua"
     "ftplugin"
     "lua"
-    "coc-settings.json"
     ".ignore"
 )
 

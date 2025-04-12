@@ -68,13 +68,17 @@ return {
         open_files_using_relative_paths = false,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         sort_function = nil, -- use a custom function for sorting files and directories in the tree
-        -- sort_function = function (a,b)
-        --       if a.type == b.type then
-        --           return a.path > b.path
-        --       else
-        --           return a.type > b.type
-        --       end
-        --   end , -- this sorts files and directories descendantly
+
+        -- auto close when opening a new file
+        event_handlers = {
+          {
+            event = "file_opened",
+            handler = function()
+              -- Automatically close Neo-tree when a file is opened
+              require("neo-tree").close_all()
+            end,
+          },
+        },
         default_component_configs = {
           container = {
             enable_character_fade = true,
@@ -167,6 +171,7 @@ return {
         -- see `:h neo-tree-custom-commands-global`
         commands = {},
         window = {
+
           position = "left",
           width = 40,
           mapping_options = {
@@ -389,6 +394,16 @@ return {
 
       vim.keymap.set("n", "<leader>q", "<Cmd>Neotree toggle<CR>")
       vim.keymap.set("n", "<leader>r", "<Cmd>Neotree reveal<CR>")
+
+      -- open the Neo-tree file explorer when Vim starts
+      vim.api.nvim_create_autocmd("VimEnter", {
+        callback = function()
+          -- Only open Neotree if no files were passed as arguments
+          if vim.fn.argc() == 0 then
+            vim.cmd("Neotree filesystem reveal left")
+          end
+        end,
+      })
     end,
   },
 }
