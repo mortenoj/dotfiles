@@ -1,7 +1,7 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 
-vim.keymap.set("n", "<Leader><Leader>", ':noh<cr>')
+vim.keymap.set("n", "<Leader><Leader>", ":noh<cr>")
 
 -- make it easier to jump between windows
 vim.keymap.set("n", "<C-h>", "<C-w>h")

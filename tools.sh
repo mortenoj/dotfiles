@@ -70,6 +70,8 @@ pip3 install fb-idb
 brew install ios-deploy
 
 brew install luarocks
+brew install stylua
+brew install prettierd
 
 
 # -------------------------------

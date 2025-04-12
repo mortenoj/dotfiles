@@ -20,10 +20,6 @@ vim.opt.relativenumber = true
 
 vim.opt.ruler = true
 
--- set completeopt=longest,menuone,preview
--- set completeopt-=preview
-vim.opt.completeopt = { "menu", "preview" }
-
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -52,31 +48,16 @@ vim.opt.autoindent = true
 -- disable mouse mode
 vim.opt.mouse = ""
 
--------------- Theme & Colors --------------
+-------------- Colors --------------
 
 vim.opt.termguicolors = true
 vim.cmd("syntax on")
 
--- default colors I guess?
-vim.cmd([[
-highlight Pmenu guibg=white guifg=black gui=bold
-highlight Comment gui=bold
-highlight Normal gui=none
-highlight NonText guibg=none
-highlight Normal ctermfg=12 ctermbg=8 cterm=NONE
-highlight HighlightedyankRegion term=bold ctermbg=0 guibg=#555555
-]])
-
--- TODO: remove ?
-vim.cmd([[
-autocmd BufEnter *.ts :setlocal filetype=typescript
-autocmd BufEnter *.js :setlocal filetype=javascript
-
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-autocmd FileType json syntax match Comment +\/\/.\+$+
-autocmd BufNewFile,BufRead .eslintrc set filetype=javascript
-
-" trigger autoread when changing buffers inside while inside vim:
-au FocusGained,BufEnter * :checktime
-]])
+-- yank highlight
+vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = "#6E738D" })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank({ higroup = "HighlightedyankRegion", timeout = 500 })
+	end,
+})
