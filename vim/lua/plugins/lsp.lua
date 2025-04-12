@@ -14,21 +14,122 @@ local config = {
 			})
 		end,
 	},
-	{ "neovim/nvim-lspconfig" },
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+		},
+		config = function()
+			-- Set up global LSP UI configurations
+			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+				border = "rounded",
+				max_width = 80,
+				max_height = 20,
+			})
 
-	-- {
-	-- 	"nvimdev/lspsaga.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 		"nvim-tree/nvim-web-devicons",
-	-- 	},
-	-- 	config = function()
-	-- 		require("lspsaga").setup({
-	-- 			ui = { border = "rounded" },
-	-- 			lightbulb = { enable = false },
-	-- 		})
-	-- 	end,
-	-- },
+			-- Set up lspconfig.
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local util = require("lspconfig.util")
+
+			-- function to find the root directory containing .git/
+			local function get_root_dir()
+				return util.find_git_ancestor(vim.fn.expand("%:p")) -- Try to find `.git` folder first
+					or vim.fn.getcwd() -- Fallback to the current working directory if no markers are found
+			end
+
+			local on_attach = function(_, bufnr)
+				local setKeyOpts = { buffer = bufnr, noremap = true, silent = true }
+
+				local keymap = vim.keymap.set
+
+				keymap("n", "<leader>e", vim.diagnostic.goto_next, setKeyOpts)
+				keymap("n", "<leader>E", vim.diagnostic.goto_prev, setKeyOpts)
+
+				vim.api.nvim_create_autocmd("CursorHold", {
+					buffer = bufnr,
+					callback = function()
+						vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
+					end,
+				})
+			end
+
+			require("mason-lspconfig").setup_handlers({
+				function(server_name)
+					local lspconfig = require("lspconfig")
+					if server_name == "lua_ls" then
+						lspconfig[server_name].setup({
+							root_dir = get_root_dir,
+							on_attach = on_attach,
+							capabilities = capabilities,
+							settings = {
+								Lua = {
+									runtime = {
+										version = "LuaJIT",
+									},
+									diagnostics = {
+										-- Get the language server to recognize the `vim` global
+										globals = {
+											"vim",
+											"require",
+										},
+									},
+									workspace = {
+										-- Make the server aware of Neovim runtime files
+										library = vim.api.nvim_get_runtime_file("", true),
+									},
+									-- Do not send telemetry data containing a randomized but unique identifier
+									telemetry = {
+										enable = false,
+									},
+								},
+							},
+						})
+					else
+						lspconfig[server_name].setup({
+							root_dir = get_root_dir,
+							on_attach = on_attach,
+							capabilities = capabilities,
+						})
+					end
+				end,
+			})
+		end,
+	},
+
+	{
+		"nvimdev/lspsaga.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			local setKeyOpts = { noremap = true, silent = true }
+
+			require("lspsaga").setup({
+				lightbulb = { enable = false },
+				finder = {
+					keys = {
+						quit = "<Esc>",
+						toggle_or_open = "<CR>",
+					},
+				},
+			})
+
+			-- Set up Lspsaga keybindings
+			vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", setKeyOpts)
+
+			vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", setKeyOpts)
+			vim.keymap.set("n", "gpd", "<cmd>Lspsaga peek_definition<CR>", setKeyOpts)
+			vim.keymap.set("n", "gpt", "<cmd>Lspsaga peek_type_definition<CR>", setKeyOpts)
+
+			vim.keymap.set("n", "grr", "<cmd>Lspsaga finder<CR>", setKeyOpts)
+			vim.keymap.set("n", "gri", "<cmd>Lspsaga finder imp<CR>", setKeyOpts)
+
+			vim.keymap.set("n", "grn", "<cmd>Lspsaga rename<CR>", setKeyOpts)
+			vim.keymap.set("n", "gra", "<cmd>Lspsaga code_action<CR>", setKeyOpts)
+		end,
+	},
 
 	{
 		"L3MON4D3/LuaSnip",
@@ -92,84 +193,6 @@ local config = {
 					{ name = "path" },
 				},
 			})
-
-			-- Set up lspconfig.
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local util = require("lspconfig.util")
-
-			-- function to find the root directory containing .git/
-			local function get_root_dir()
-				return util.find_git_ancestor(vim.fn.expand("%:p")) -- Try to find `.git` folder first
-					or vim.fn.getcwd() -- Fallback to the current working directory if no markers are found
-			end
-
-			local on_attach = function(_, bufnr)
-				local opts = { buffer = bufnr, noremap = true, silent = true }
-
-				-- Keybindings for LSP and Plugins
-				local keymap = vim.keymap.set
-
-				-- LSP Keybindings
-				keymap("n", "K", vim.lsp.buf.hover, opts)
-				keymap("n", "gd", vim.lsp.buf.definition, opts)
-				keymap("n", "gr", vim.lsp.buf.references, opts)
-				keymap("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				keymap("n", "<leader>a", vim.lsp.buf.code_action, opts)
-
-				-- Diagnostics Navigation
-				keymap("n", "<leader>e", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-				keymap("n", "<leader>E", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-
-				vim.api.nvim_create_autocmd("CursorHold", {
-					buffer = bufnr,
-					callback = function()
-						vim.diagnostic.open_float(nil, { focus = false, border = "rounded" })
-					end,
-				})
-			end
-
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					local lspconfig = require("lspconfig")
-					if server_name == "lua_ls" then
-						lspconfig[server_name].setup({
-							root_dir = get_root_dir,
-							on_attach = on_attach,
-							capabilities = capabilities,
-							settings = {
-								Lua = {
-									runtime = {
-										version = "LuaJIT",
-									},
-									diagnostics = {
-										-- Get the language server to recognize the `vim` global
-										globals = {
-											"vim",
-											"require",
-										},
-									},
-									workspace = {
-										-- Make the server aware of Neovim runtime files
-										library = vim.api.nvim_get_runtime_file("", true),
-									},
-									-- Do not send telemetry data containing a randomized but unique identifier
-									telemetry = {
-										enable = false,
-									},
-								},
-							},
-						})
-					else
-						lspconfig[server_name].setup({
-							root_dir = get_root_dir,
-							on_attach = on_attach,
-							capabilities = capabilities,
-						})
-					end
-				end,
-			})
-
-			vim.o.signcolumn = "yes"
 		end,
 	},
 

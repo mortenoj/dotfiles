@@ -4,6 +4,8 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.writebackup = false
 
+vim.o.signcolumn = "yes"
+
 -- NB: set background=dark
 vim.opt.background = "dark"
 
@@ -16,7 +18,7 @@ vim.opt.cmdheight = 1
 
 vim.opt.cursorline = false
 vim.opt.cursorcolumn = false
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 vim.opt.ruler = true
 
