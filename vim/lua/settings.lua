@@ -18,7 +18,7 @@ vim.opt.cmdheight = 1
 
 vim.opt.cursorline = false
 vim.opt.cursorcolumn = false
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 vim.opt.ruler = true
 
