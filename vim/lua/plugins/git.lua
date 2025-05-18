@@ -14,6 +14,12 @@ return {
 	},
 	{
 		"sindrets/diffview.nvim",
+		opts = {
+			default_args = {
+				DiffviewOpen = { "--ignore-all-space" }, -- Default: `--ignore-space-change`
+				DiffviewFileHistory = {},
+			},
+		},
 		config = function()
 			vim.keymap.set("n", "<leader>dd", "<cmd>DiffviewOpen<cr>")
 			vim.keymap.set("n", "<leader>dc", "<cmd>DiffviewClose<cr>")

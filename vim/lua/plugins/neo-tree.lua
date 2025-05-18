@@ -394,16 +394,15 @@ return {
 
 			vim.keymap.set("n", "<leader>q", "<Cmd>Neotree toggle<CR>")
 			vim.keymap.set("n", "<leader>r", "<Cmd>Neotree reveal<CR>")
-
 			-- open the Neo-tree file explorer when Vim starts
-			vim.api.nvim_create_autocmd("VimEnter", {
-				callback = function()
-					-- Only open Neotree if no files were passed as arguments
-					if vim.fn.argc() == 0 then
-						vim.cmd("Neotree filesystem reveal left")
-					end
-				end,
-			})
+			-- vim.api.nvim_create_autocmd("VimEnter", {
+			-- 	callback = function()
+			-- 		-- Only open Neotree if no files were passed as arguments
+			-- 		if vim.fn.argc() == 0 then
+			-- 			vim.cmd("Neotree filesystem reveal left")
+			-- 		end
+			-- 	end,
+			-- })
 		end,
 	},
 }

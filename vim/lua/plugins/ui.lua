@@ -83,6 +83,7 @@ return {
 							{ find = "lines <ed" },
 							{ find = "lines >ed" },
 							{ find = "lines yanked" },
+							-- { find = "pounce>" },
 						},
 					},
 				},

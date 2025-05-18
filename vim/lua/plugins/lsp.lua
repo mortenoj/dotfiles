@@ -1,16 +1,23 @@
 local config = {
 	{
-		"williamboman/mason.nvim",
+		"mason-org/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = {},
-				automatic_installation = true,
+				ensure_installed = {
+					"ts_ls",
+					"eslint",
+					"lua_ls",
+					"golangci_lint_ls",
+					"gopls",
+					"graphql",
+				},
+				automatic_enable = true,
 			})
 		end,
 	},
@@ -21,30 +28,13 @@ local config = {
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			-- Set up global LSP UI configurations
-			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-				border = "rounded",
-				max_width = 80,
-				max_height = 20,
-			})
-
-			-- Set up lspconfig.
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local util = require("lspconfig.util")
-
-			-- function to find the root directory containing .git/
-			local function get_root_dir()
-				return util.find_git_ancestor(vim.fn.expand("%:p")) -- Try to find `.git` folder first
-					or vim.fn.getcwd() -- Fallback to the current working directory if no markers are found
-			end
 
 			local on_attach = function(_, bufnr)
 				local setKeyOpts = { buffer = bufnr, noremap = true, silent = true }
 
-				local keymap = vim.keymap.set
-
-				keymap("n", "<leader>e", vim.diagnostic.goto_next, setKeyOpts)
-				keymap("n", "<leader>E", vim.diagnostic.goto_prev, setKeyOpts)
+				vim.keymap.set("n", "<leader>E", vim.diagnostic.goto_prev, setKeyOpts)
+				vim.keymap.set("n", "<leader>e", vim.diagnostic.goto_next, setKeyOpts)
 
 				vim.api.nvim_create_autocmd("CursorHold", {
 					buffer = bufnr,
@@ -54,45 +44,61 @@ local config = {
 				})
 			end
 
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					local lspconfig = require("lspconfig")
-					if server_name == "lua_ls" then
-						lspconfig[server_name].setup({
-							root_dir = get_root_dir,
-							on_attach = on_attach,
-							capabilities = capabilities,
-							settings = {
-								Lua = {
-									runtime = {
-										version = "LuaJIT",
-									},
-									diagnostics = {
-										-- Get the language server to recognize the `vim` global
-										globals = {
-											"vim",
-											"require",
-										},
-									},
-									workspace = {
-										-- Make the server aware of Neovim runtime files
-										library = vim.api.nvim_get_runtime_file("", true),
-									},
-									-- Do not send telemetry data containing a randomized but unique identifier
-									telemetry = {
-										enable = false,
-									},
-								},
+			vim.lsp.config("*", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+			vim.lsp.config("lua_ls", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						runtime = { version = "LuaJIT" },
+						diagnostics = {
+							-- Get the language server to recognize the `vim` global
+							globals = {
+								"vim",
+								"require",
 							},
-						})
-					else
-						lspconfig[server_name].setup({
-							root_dir = get_root_dir,
-							on_attach = on_attach,
-							capabilities = capabilities,
-						})
-					end
-				end,
+						},
+						workspace = {
+							-- Make the server aware of Neovim runtime files
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						-- Do not send telemetry data containing a randomized but unique identifier
+						telemetry = { enable = false },
+					},
+				},
+			})
+
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#ts_ls
+			vim.lsp.config("ts_ls", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+				root_markers = {
+					"tsconfig.json",
+					"jsconfig.json",
+					"package.json",
+					".git",
+				},
+			})
+
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#eslint
+			vim.lsp.config("eslint", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+				root_markers = {
+					"eslint.config.js",
+					"eslint.config.mjs",
+					".eslintrc.js",
+					".eslintrc.cjs",
+					".eslintrc.json",
+					".eslintrc.yaml",
+					".eslintrc.yml",
+					".eslintrc",
+					"package.json",
+					".git",
+				},
 			})
 		end,
 	},
@@ -120,6 +126,10 @@ local config = {
 						quit = "<Esc>",
 					},
 				},
+				hover = {
+					max_width = 1,
+					max_height = 1,
+				},
 			})
 
 			-- Set up Lspsaga keybindings
@@ -137,6 +147,44 @@ local config = {
 		end,
 	},
 
+	-- {
+	-- 	"folke/trouble.nvim",
+	-- 	opts = {}, -- for default options, refer to the configuration section for custom setup.
+	-- 	cmd = "Trouble",
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>xx",
+	-- 			"<cmd>Trouble diagnostics toggle<cr>",
+	-- 			desc = "Diagnostics (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>xX",
+	-- 			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+	-- 			desc = "Buffer Diagnostics (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>cs",
+	-- 			"<cmd>Trouble symbols toggle focus=false<cr>",
+	-- 			desc = "Symbols (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>cl",
+	-- 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+	-- 			desc = "LSP Definitions / references / ... (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>xL",
+	-- 			"<cmd>Trouble loclist toggle<cr>",
+	-- 			desc = "Location List (Trouble)",
+	-- 		},
+	-- 		{
+	-- 			"<leader>xQ",
+	-- 			"<cmd>Trouble qflist toggle<cr>",
+	-- 			desc = "Quickfix List (Trouble)",
+	-- 		},
+	-- 	},
+	-- },
+	--
 	{
 		"L3MON4D3/LuaSnip",
 		version = "v2.*",
@@ -180,6 +228,7 @@ local config = {
 
 			--- @diagnostic disable-next-line: redundant-parameter
 			cmp.setup({
+				preselect = cmp.PreselectMode.None,
 				snippet = {
 					expand = function(args)
 						luasnip.lsp_expand(args.body)
@@ -231,7 +280,9 @@ local config = {
 					javascript = { "prettierd", "eslint_d", stop_after_first = false },
 					typescript = { "prettierd", "eslint_d", stop_after_first = false },
 					typescriptreact = { "prettierd", "eslint_d", stop_after_first = false },
+					json = { "fixjson", stop_after_first = false },
 					go = { "gofmt", "golangci-lint", stop_after_first = false },
+					graphql = { "prettierd", stop_after_first = false },
 				},
 				format_on_save = {
 					timeout_ms = 500,

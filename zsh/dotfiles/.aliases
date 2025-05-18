@@ -18,7 +18,6 @@ alias cl="clear"
 alias psqlStart="brew services start postgresql"
 alias psqlStop="brew services stop postgresql"
 
-alias unstage="git clean -df && git checkout -- ."
 
 # Tmuxinator
 # alias t="tmuxinator"
@@ -35,3 +34,10 @@ alias ....="cd ../../.."
 alias cat="bat --theme OneHalfDark"
 alias ls="eza"
 alias l="eza -lah"
+
+# Git
+alias gp="git pull"
+alias gc="git checkout"
+alias gcd="git checkout develop"
+alias gcdp="git checkout develop && git pull origin develop"
+alias unstage="git clean -df && git checkout -- ."

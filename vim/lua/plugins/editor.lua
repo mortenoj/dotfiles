@@ -5,7 +5,12 @@ return {
 		config = true,
 		opts = {
 			disable_filetype = {},
+			map_cr = true,
 		},
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		opts = {},
 	},
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },

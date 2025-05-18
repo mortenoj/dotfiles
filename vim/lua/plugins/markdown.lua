@@ -5,5 +5,8 @@ return {
 	---@type render.md.UserConfig
 	opts = {
 		render_modes = { "n", "c", "t" },
+		code = {
+			style = "language",
+		},
 	},
 }
