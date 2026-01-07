@@ -237,7 +237,7 @@ local config = {
 				mapping = cmp.mapping.preset.insert({
 					["<Tab>"] = cmp.mapping.select_next_item(),
 					["<S-Tab>"] = cmp.mapping.select_prev_item(),
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<CR>"] = cmp.mapping.confirm({ select = false }),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -260,6 +260,7 @@ local config = {
 				javascript = { "eslint_d" },
 				typescript = { "eslint_d" },
 				typescriptreact = { "eslint_d" },
+				json = { "eslint_d" },
 				go = { "golangcilint" },
 			}
 
@@ -280,7 +281,8 @@ local config = {
 					javascript = { "prettierd", "eslint_d", stop_after_first = false },
 					typescript = { "prettierd", "eslint_d", stop_after_first = false },
 					typescriptreact = { "prettierd", "eslint_d", stop_after_first = false },
-					json = { "fixjson", stop_after_first = false },
+					json = { "prettierd", "eslint_d", stop_after_first = false },
+					-- json = { "fixjson", stop_after_first = false },
 					go = { "gofmt", "golangci-lint", stop_after_first = false },
 					graphql = { "prettierd", stop_after_first = false },
 				},

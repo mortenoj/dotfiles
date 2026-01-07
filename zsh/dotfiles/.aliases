@@ -41,3 +41,6 @@ alias gc="git checkout"
 alias gcd="git checkout develop"
 alias gcdp="git checkout develop && git pull origin develop"
 alias unstage="git clean -df && git checkout -- ."
+
+# Remap sed to GNU sed for better integration with nvim-spectre
+alias sed=gsed

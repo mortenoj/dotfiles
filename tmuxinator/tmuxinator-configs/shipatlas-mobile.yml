@@ -28,6 +28,3 @@ windows:
         - terminal:
             - clear
             - yarn start debug
-        - scrcpy:
-            - clear
-            - scrcpy

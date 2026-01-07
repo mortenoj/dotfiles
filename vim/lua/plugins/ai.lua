@@ -8,6 +8,9 @@ return {
 				silent = true,
 				expr = true,
 			})
+
+			-- note: other models are not support yet
+			vim.g.copilot_settings = { selectedCompletionModel = "gpt-4o-copilot" }
 		end,
 	},
 	{
@@ -19,8 +22,7 @@ return {
 		build = "make tiktoken", -- Only on MacOS or Linux
 		config = function()
 			require("CopilotChat").setup({
-				-- model = "gpt-4o",
-				model = "claude-3.5-sonnet",
+				model = "claude-sonnet-4",
 				mappings = {
 					reset = {
 						normal = "<C-c>",
@@ -50,9 +52,18 @@ return {
 				desc = "CopilotChat - Quick chat",
 			})
 
-			vim.keymap.set("n", "<leader>cc", ":CopilotChat<CR>", {
-				desc = "CopilotChat - Open",
-			})
+			local open = function()
+				local select = require("CopilotChat.select")
+
+				require("CopilotChat").open({
+					selection = function(source)
+						return select.visual(source) or select.buffer(source)
+					end,
+				})
+			end
+
+			vim.keymap.set("n", "<leader>cc", open, { desc = "CopilotChat - Open " })
+			vim.keymap.set("v", "<leader>cc", open, { desc = "CopilotChat - Open " })
 		end,
 	},
 }

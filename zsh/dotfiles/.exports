@@ -12,7 +12,7 @@ export PATH="$HOME/Code/tools/:$PATH"
 
 # Use gnu-sed instead of mac-specific sed for better compatibility with tools
 # written for linux such as 'nvim-spectre'
-export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
+# export PATH="$(brew --prefix)/opt/gnu-sed/libexec/gnubin:$PATH"
 
 export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_PATH"
 
@@ -51,3 +51,6 @@ export GIT_PAGER='delta'
 # export TMUX_PROGRAM="$(brew --prefix)/bin/tmux"
 # export TMUX_CONF="$HOME/.tmux.conf"
 # export TMUX_CONF_LOCAL="$HOME/.tmux.conf.local"
+
+# PSQL
+export PATH="$(brew --prefix)/opt/postgresql@18/bin:$PATH"
