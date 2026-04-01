@@ -13,6 +13,25 @@ return {
 	},
 
 	{
+		"f-person/auto-dark-mode.nvim",
+		opts = {
+			update_interval = 2000,
+
+			set_dark_mode = function()
+				vim.api.nvim_set_option_value("background", "dark", {})
+				vim.cmd.colorscheme("catppuccin-mocha")
+			end,
+
+			set_light_mode = function()
+				vim.api.nvim_set_option_value("background", "light", {})
+				vim.cmd.colorscheme("catppuccin-latte")
+			end,
+
+			fallback = "dark",
+		},
+	},
+
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
@@ -27,14 +46,14 @@ return {
 
 	-- Visual enhancements
 	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup({
-				"*", -- Highlight all files, but customize some others.
-				css = { rgb_fn = true }, -- Enable parsing rgb(...) functions in css.
-				html = { names = false }, -- Disable parsing "names" like Blue or Gray
-			})
-		end,
+		"catgoose/nvim-colorizer.lua",
+		event = "BufReadPre",
+		opts = {
+			filetypes = { "*" },
+			options = {
+				parsers = { css_fn = true },
+			},
+		},
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",

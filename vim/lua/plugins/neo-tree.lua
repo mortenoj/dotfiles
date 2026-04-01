@@ -19,7 +19,14 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 			"MunifTanjim/nui.nvim",
-			{ "3rd/image.nvim", opts = {} }, -- Optional image support in preview window: See `# Preview Mode` for more information
+			{
+				"3rd/image.nvim",
+				build = false,
+				opts = {
+					processor = "magick_cli",
+				},
+			},
+			-- Optional image support in preview window: See `# Preview Mode` for more information
 			{
 				"s1n7ax/nvim-window-picker", -- for open_with_window_picker keymaps
 				version = "2.*",
@@ -39,6 +46,16 @@ return {
 					})
 				end,
 			},
+			-- default setup from s1n7ax/nvim-window-picker:
+			-- {
+			-- 	"s1n7ax/nvim-window-picker",
+			-- 	name = "window-picker",
+			-- 	event = "VeryLazy",
+			-- 	version = "2.*",
+			-- 	config = function()
+			-- 		require("window-picker").setup()
+			-- 	end,
+			-- },
 		},
 		lazy = false,
 		-----Instead of using `config`, you can use `opts` instead, if you'd like:

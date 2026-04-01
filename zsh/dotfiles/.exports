@@ -20,6 +20,9 @@ export DYLD_FALLBACK_LIBRARY_PATH="$(brew --prefix)/lib:$DYLD_FALLBACK_LIBRARY_P
 export PATH="$(brew --prefix)/opt/openjdk@17/bin:$PATH"
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 
 #export PATH="/usr/local/opt/ruby/bin:$PATH"
 

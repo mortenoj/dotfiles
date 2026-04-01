@@ -1,22 +1,40 @@
 return {
-	{
-		"github/copilot.vim",
-		config = function()
-			-- remap accept from tab to <C-CR>
-			vim.g.copilot_no_tab_map = true
-			vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("<CR>")', {
-				silent = true,
-				expr = true,
-			})
+	--
+	-- NB: Trying out supermaven-nvim instead of copilot.vim
+	--
+	-- {
+	-- 	"github/copilot.vim",
+	-- 	config = function()
+	-- 		-- remap accept from tab to <C-CR> (Ctrl + Enter)
+	-- 		vim.g.copilot_no_tab_map = true
+	-- 		vim.api.nvim_set_keymap("i", "<C-CR>", 'copilot#Accept("<CR>")', {
+	-- 			silent = true,
+	-- 			expr = true,
+	-- 		})
+	--
+	-- 		-- note: other models are not support yet
+	-- 		vim.g.copilot_settings = { selectedCompletionModel = "gpt-4o-copilot" }
+	-- 	end,
+	-- },
 
-			-- note: other models are not support yet
-			vim.g.copilot_settings = { selectedCompletionModel = "gpt-4o-copilot" }
+	{
+		"supermaven-inc/supermaven-nvim",
+		config = function()
+			require("supermaven-nvim").setup({
+				keymaps = {
+					accept_suggestion = "<C-CR>", -- Ctrl + Enter
+				},
+				color = {
+					suggestion_color = "#6c7086", -- darker than surface2
+					cterm = 242, -- approx match in 256-color
+				},
+			})
 		end,
 	},
+
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		dependencies = {
-			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
 			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux

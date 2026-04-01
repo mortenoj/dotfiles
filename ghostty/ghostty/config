@@ -1,4 +1,4 @@
-theme = catppuccin-mocha.conf
+theme = dark:catppuccin-mocha.conf,light:catppuccin-latte.conf
 
 # this will let Ghostty automatically detect the theme. 
 # Sadly, neovom does not

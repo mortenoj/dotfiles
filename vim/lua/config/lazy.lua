@@ -26,4 +26,8 @@ require("lazy").setup({
 	install = { colorscheme = { "catppuccin-mocha" } },
 	-- automatically check for plugin updates
 	checker = { enabled = true },
+
+	rocks = {
+		hererocks = true,
+	},
 })
