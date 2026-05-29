@@ -1,9 +1,5 @@
 theme = dark:catppuccin-mocha.conf,light:catppuccin-latte.conf
 
-# this will let Ghostty automatically detect the theme. 
-# Sadly, neovom does not
-# theme = dark:catppuccin-mocha,light:catppuccin-latte
-
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false

@@ -55,8 +55,30 @@ vim.opt.mouse = ""
 vim.opt.termguicolors = true
 vim.cmd("syntax on")
 
--- yank highlight
-vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = "#6E738D" })
+---- yank highlight ----
+
+local dark_yank = "#6E738D"
+local light_yank = "#F3B7C8"
+
+-- apply highlight to yank
+local function apply_yank_hl()
+	local bg_opt = vim.o.background
+	local col = dark_yank
+
+	if bg_opt == "light" then
+		col = light_yank
+	elseif bg_opt == "dark" then
+		col = dark_yank
+	end
+
+	vim.api.nvim_set_hl(0, "HighlightedyankRegion", { bg = col })
+end
+
+-- apply now and whenever a colorscheme loads (covers auto-dark-mode)
+apply_yank_hl()
+vim.api.nvim_create_autocmd("ColorScheme", { callback = apply_yank_hl })
+
+-- yank autocmd
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 	callback = function()
