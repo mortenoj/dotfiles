@@ -55,14 +55,30 @@ return {
 			},
 		},
 	},
+	-- {
+	-- 	"lukas-reineke/indent-blankline.nvim",
+	-- 	main = "ibl",
+	-- 	---@module "ibl"
+	-- 	---@type ibl.config
+	-- 	opts = {
+	-- 		indent = { char = "┆" },
+	-- 		scope = { enabled = true },
+	-- 	},
+	-- },
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		---@module "ibl"
-		---@type ibl.config
+		"saghen/blink.indent",
+		--- @module 'blink.indent'
+		--- @type blink.indent.Config
 		opts = {
-			indent = { char = "┆" },
-			scope = { enabled = true },
+			static = {
+				enabled = true,
+				char = "┆",
+			},
+			scope = {
+				enabled = true, -- highlight highest level of indentation on the current line
+				indent_at_cursor = false, -- clamp to indent level of cursor
+				char = "┆",
+			},
 		},
 	},
 
