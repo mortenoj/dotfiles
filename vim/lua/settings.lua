@@ -1,4 +1,6 @@
 ------------- General settings -------------
+-- disable matchparen which causes a lot of stuttering when scrolling
+vim.g.loaded_matchparen = 1
 
 vim.opt.swapfile = false
 vim.opt.backup = false

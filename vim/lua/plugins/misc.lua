@@ -80,8 +80,8 @@ return {
 	{ "Asheq/close-buffers.vim" },
 
 	-- language specific
-	{ "sheerun/vim-polyglot" },
-	{ "HerringtonDarkholme/yats.vim" },
-	{ "pangloss/vim-javascript" },
+	-- { "sheerun/vim-polyglot" },
+	-- { "HerringtonDarkholme/yats.vim" },
+	-- { "pangloss/vim-javascript" },
 	{ "folke/lazydev.nvim" },
 }
